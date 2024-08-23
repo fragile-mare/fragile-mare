@@ -1,60 +1,56 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using JetBrains.Annotations;
 using src.pubsub;
 using src.Topics.Game;
-using src.Topics.Player;
 using src.Topics.Player.InputActions;
-using src.Utils.EnumDictionary;
 using src.Utils.GameContext;
 using src.Utils.HotKey;
 using UnityEngine;
 using UnityEngine.Profiling;
 using UnityEngine.Serialization;
 
-namespace src.Scripts.Player
+namespace src.Scripts.Input
 {
     public class PlayerInput : MonoBehaviour
     {
         // todo: превратить в конфиг.
-        [SerializeField] 
-        private List<ActionInputsByContext> actionInputsByContexts;
+        [FormerlySerializedAs("actionInputsByContexts")] [SerializeField] 
+        private List<ContextualActionConfigs> configs;
 
         private GameContext _currContext = GameContext.Game;
         private Subscription _contextSub;
 
         // при изменении игрового контекста - обновлять
-        private List<ActionInput> _currActionInputs;
+        private List<ActionConfig> _currActionConfigs;
 
-        private readonly Dictionary<KeyCode, (ActionInput actionInput, int priority)> _currentHotkeys = new();
-        private readonly Dictionary<PlayerAction, bool> _published = new();
+        private readonly Dictionary<KeyCode, (ActionConfig actionConfig, int priority)> _activatedConfigs = new();
+        private readonly Dictionary<InputAction, bool> _published = new();
 
         private void Start()
         {
-            _currActionInputs = GetActionInputs(_currContext);
+            _currActionConfigs = GetActionConfigs(_currContext);
             
             ContextTopic.Subscribe(@params =>
             {
                 _currContext = @params.Context;
-                _currActionInputs = GetActionInputs(_currContext);
+                _currActionConfigs = GetActionConfigs(_currContext);
             }, out _contextSub);
         }
 
         void Update()
         {
-            ProcessActionInput();
+            ProcessInput();
         }
 
         // todo: нужны ли идентификаторы начала и конца действия, чтобы не спамить действием Move?
         // todo: скорее всего нет, ведь мы и так спамим поворотом мышки.
-        private void ProcessActionInput()
+        private void ProcessInput()
         {
-            Profiler.BeginSample("ProcessActionInput");
-            _currentHotkeys.Clear();
+            _activatedConfigs.Clear();
             _published.Clear();
             
-            foreach (var actionInput in GetCurrentActionInputs())
+            foreach (var actionInput in GetCurrentActionConfigs())
             {
                 foreach (var hotkey in actionInput.hotKeys)
                 {
@@ -65,18 +61,18 @@ namespace src.Scripts.Player
                     
                     // Выбираем нужное сочетание клавиш по приоритету (подробнее - в комментариях к
                     // методу Hotkey.GetPriority; он находится выше).
-                    if (_currentHotkeys.ContainsKey(key) && _currentHotkeys[key].priority > priority)
+                    if (_activatedConfigs.ContainsKey(key) && _activatedConfigs[key].priority > priority)
                     {
                         continue;
                     }
                     
-                    _currentHotkeys[hotkey.key] = (actionInput, priority);
+                    _activatedConfigs[hotkey.key] = (actionConfig: actionInput, priority);
                 }
             }
             
-            foreach (var (_, (actionInput, _)) in _currentHotkeys)
+            foreach (var (_, (actionInput, _)) in _activatedConfigs)
             {
-                var action = actionInput.playerAction;
+                var action = actionInput.inputAction;
                 // убираем дубликаты действий.
                 // todo: сделать так, чтобы не возникало одновременно Move и Sprint. При этом приоритет Sprint выше.
                 if(_published.ContainsKey(action)) continue; 
@@ -84,22 +80,20 @@ namespace src.Scripts.Player
                 actionInput.Execute();
                 _published[action] = true; // помечаем, что уже выполнили действие.
             }
-            
-            Profiler.EndSample();
         }
 
         /// Выбираем правила сочетаний клавиш в зависимости от игрового контекста (игра, меню, инвентарь и т.д.)
-        public List<ActionInput> GetActionInputs(GameContext context)
+        public List<ActionConfig> GetActionConfigs(GameContext context)
         {
-            return actionInputsByContexts.
-                Find(x => x.context == context).actionInputs;
+            return configs.
+                Find(x => x.context == context).configs;
         }
 
-        /// Правила сочетаний клавиш текущего игрового контекста. См. на функцию выше <see cref="GetActionInputs"/>.
-        /// WARNING: при изменении контекста нужно менять <see cref="_currActionInputs"/>.
-        public List<ActionInput> GetCurrentActionInputs()
+        /// Правила сочетаний клавиш текущего игрового контекста. См. на функцию выше <see cref="GetActionConfigs"/>.
+        /// WARNING: при изменении контекста нужно менять <see cref="_currActionConfigs"/>.
+        public List<ActionConfig> GetCurrentActionConfigs()
         {
-            return _currActionInputs;
+            return _currActionConfigs;
         }
 
         private void OnDestroy()
@@ -108,47 +102,26 @@ namespace src.Scripts.Player
         }
     }
 
+    /// <summary>
+    /// Список хоткеев и действие, которое активирается от них
+    /// </summary>
     [Serializable]
-    public class ActionInput
+    public class ActionConfig
     {
-        [FormerlySerializedAs("action")] public PlayerAction playerAction;
+        [FormerlySerializedAs("playerAction")] [FormerlySerializedAs("action")] public InputAction inputAction;
         // public bool canOverride; todo
         public List<HotKey> hotKeys;
 
-        public ActionInput(PlayerAction playerAction, List<HotKey> keys=null)
-        {
-            this.playerAction = playerAction;
-            hotKeys = keys ?? new List<HotKey>();
-        }
-
-        public void AddKey(HotKey key)
-        {
-            hotKeys.Add(key);
-        }
-
-        // todo: переделать
-        [Obsolete("Переделать.")]
-        public void RemoveKey(HotKey key)
-        {
-            hotKeys.RemoveAll(x => x == key);
-        }
-
-        // todo: зачем
-        public bool IsActivated()
-        {
-            return hotKeys.Any(key => key.IsPressed());
-        }
-
         public void Execute()
         {
-            PlayerActions.Publish(new PlayerActionsParams{PlayerAction = playerAction});
+            InputActionsTopic.Publish(new InputActionParams{InputAction = inputAction});
         }
     }
 
     [Serializable]
-    public class ActionInputsByContext
+    public class ContextualActionConfigs
     {
         public GameContext context;
-        public List<ActionInput> actionInputs;
+        [FormerlySerializedAs("actionInputs")] public List<ActionConfig> configs;
     }
 }

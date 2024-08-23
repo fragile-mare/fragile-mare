@@ -27,12 +27,12 @@ namespace src.Scripts.Player
         {
             if (playerCamera == null) playerCamera = Camera.main;
             
-            PlayerActions.Subscribe(@params =>
+            InputActionsTopic.Subscribe(@params =>
             {
-                var move = GetMoveVector(@params.PlayerAction);
+                var move = GetMoveVector(@params.InputAction);
                 if (move == Vector3.zero)
                 {
-                    Debug.LogError($"Unknown player action type. type: \"{@params.PlayerAction}\"");
+                    Debug.LogError($"Unknown player action type. type: \"{@params.InputAction}\"");
                 }
 
                 _moveInThisFrame += move;
@@ -69,14 +69,14 @@ namespace src.Scripts.Player
             _playerActionsSub.Unsubscribe();
         }
 
-        public Vector3 GetMoveVector(PlayerAction action)
+        public Vector3 GetMoveVector(InputAction action)
         {
             return action switch
             {
-                PlayerAction.MoveForward => Vector3.forward * speed,
-                PlayerAction.MoveBack => Vector3.back * speed,
-                PlayerAction.MoveRight => Vector3.right * speed,
-                PlayerAction.MoveLeft => Vector3.left * speed,
+                InputAction.MoveForward => Vector3.forward * speed,
+                InputAction.MoveBack => Vector3.back * speed,
+                InputAction.MoveRight => Vector3.right * speed,
+                InputAction.MoveLeft => Vector3.left * speed,
                 _ => Vector3.zero
             };
         }

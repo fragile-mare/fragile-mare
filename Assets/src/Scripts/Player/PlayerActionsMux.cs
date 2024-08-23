@@ -13,7 +13,7 @@ namespace src.Scripts.Player
         {
             // todo: группировать разные действия игрока по топикам.
             // todo: передвижение - в один, бой - в другой и т.д.
-            PlayerActions.Subscribe(@params =>
+            InputActionsTopic.Subscribe(@params =>
             {
             }, out _playerActionsSub);
         }
