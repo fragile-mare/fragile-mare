@@ -16,8 +16,6 @@ namespace src.Scripts.Player
         private float speed = 1f;
         
         [SerializeField] private Transform playerTransform;
-
-        [SerializeField] private Camera playerCamera;
         
         private Vector3 _moveInThisFrame = Vector3.zero;
 
@@ -25,8 +23,6 @@ namespace src.Scripts.Player
         
         void Start()
         {
-            if (playerCamera == null) playerCamera = Camera.main;
-            
             InputActionsTopic.Subscribe(@params =>
             {
                 var move = GetMoveVector(@params.InputAction);
