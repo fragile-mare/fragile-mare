@@ -22,5 +22,7 @@ namespace src.Topics.General
         SprintBack,
         SprintRight,
         SprintLeft,
+        
+        Dash,
     }
 }

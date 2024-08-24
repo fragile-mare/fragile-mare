@@ -32,5 +32,7 @@ namespace src.Topics.Player.InputActions
         SprintBack,
         SprintRight,
         SprintLeft,
+        
+        Dash,
     }
 }

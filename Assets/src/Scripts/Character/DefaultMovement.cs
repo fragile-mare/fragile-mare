@@ -1,9 +1,12 @@
 using System;
+using System.Collections;
+using System.Numerics;
 using src.pubsub;
 using src.Topics.General;
 using src.Topics.Player.InputActions;
 using UnityEngine;
 using Debug = src.Utils.WDebug.Debug;
+using Vector3 = UnityEngine.Vector3;
 
 namespace src.Scripts.Character
 {
@@ -14,13 +17,32 @@ namespace src.Scripts.Character
         
         [SerializeField]
         private float sprintSpeed = 1f;
+
+        [SerializeField] [Min(0f)] 
+        private float dashDuration;
+
+        [SerializeField] [Min(0f)] 
+        private float dashSpeed;
+
+        [SerializeField] 
+        private int maxDashCount;
+
+        [SerializeField] [Min(0f)] 
+        private float oneDashRegenDuration;
         
         private Transform _targetTransform;
+
+        private MovementState _movementState = MovementState.Default;
 
         private MoveState _forwardState = MoveState.None;
         private MoveState _backState = MoveState.None;
         private MoveState _rightState = MoveState.None;
         private MoveState _leftState = MoveState.None;
+
+        private DashState _dashState = DashState.None;
+        private int _currentDashCount = 0;
+        private float _remainingDashDuration = 0;
+        private bool _isDashRegenerationActive = false;
 
         private Subscription _playerActionsSub;
 
@@ -40,6 +62,8 @@ namespace src.Scripts.Character
             _topicPrefix = entity.topicPrefix;
             _targetTransform = entity.targetTransform;
 
+            _currentDashCount = maxDashCount;
+
             _movementTopic = MovementTopic.CreateTopic(_topicPrefix);
             _movementTopic.Publish(new MovementParams 
             {
@@ -56,15 +80,38 @@ namespace src.Scripts.Character
         
         private void Update()
         {
-            var pos = _targetTransform.position;
-
             var move = Vector3.zero;
-
             move += GetMoveVector(_forwardState, Vector3.forward);
             move += GetMoveVector(_backState, Vector3.back);
             move += GetMoveVector(_rightState, Vector3.right);
             move += GetMoveVector(_leftState, Vector3.left);
 
+            if (_dashState == DashState.Active 
+                && _currentDashCount > 0
+                && _movementState == MovementState.Default)
+            {
+                _movementState = MovementState.Dash;
+                _remainingDashDuration = dashDuration;
+            }
+
+            if (!_isDashRegenerationActive)
+            {
+                StartCoroutine(DashRegeneration());
+            }
+            
+            switch (_movementState)
+            {
+                case MovementState.Default:
+                    move = DefaultMove(move);
+                    break;
+                case MovementState.Dash:
+                    move = DashMove(move);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+            
+            var pos = _targetTransform.position;
             pos += move;
             _targetTransform.position = pos;
             
@@ -74,17 +121,45 @@ namespace src.Scripts.Character
                 OldPosition = pos
             });
             
-            Debug.Log(move.ToString());
-            
             _forwardState = MoveState.None;
             _backState = MoveState.None;
             _rightState = MoveState.None;
             _leftState = MoveState.None;
+            _dashState = DashState.None;
         }
 
         private void OnDestroy()
         {
             _playerActionsSub.Unsubscribe();
+        }
+
+        private Vector3 DefaultMove(Vector3 move)
+        {
+            Debug.Log(move.ToString());
+
+            return move;
+        }
+
+        private Vector3 DashMove(Vector3 move)
+        {
+            move = move.normalized; // сделать то же самое со sprint и убрать этот normalized
+
+            _remainingDashDuration -= Time.deltaTime;
+            if (_remainingDashDuration > 0)
+            {
+                move *= dashSpeed;
+                return move;
+            }
+            
+            if (_remainingDashDuration < 0 && Time.deltaTime > 0)
+            {
+                move *= dashSpeed * (_remainingDashDuration + Time.deltaTime) / Time.deltaTime;
+            }
+
+            _currentDashCount--;
+            _movementState = MovementState.Default;
+
+            return move;
         }
 
         public Vector3 GetMoveVector(MoveState state, Vector3 direction)
@@ -128,10 +203,32 @@ namespace src.Scripts.Character
                     _leftState = MoveState.Sprint;
                     break;
                 
+                case MovementAction.Dash:
+                    _dashState = DashState.Active;
+                    break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(action), action, null);
             }
         }
+
+        public IEnumerator DashRegeneration()
+        {
+            _isDashRegenerationActive = true;
+            
+            while (_currentDashCount < maxDashCount)
+            {
+                yield return new WaitForSeconds(oneDashRegenDuration);
+                _currentDashCount++;
+            }
+
+            _isDashRegenerationActive = false;
+        }
+    }
+    
+    public enum MovementState
+    {
+        Default,
+        Dash,
     }
 
     public enum MoveState
@@ -139,5 +236,11 @@ namespace src.Scripts.Character
         None,
         Move,
         Sprint,
+    }
+    
+    public enum DashState
+    {
+        None,
+        Active,
     }
 }

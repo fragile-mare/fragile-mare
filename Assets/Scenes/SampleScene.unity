@@ -505,6 +505,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.04
   sprintSpeed: 0.08
+  dashDuration: 0.25
+  dashSpeed: 0.2
+  maxDashCount: 5
+  oneDashRegenDuration: 1
 --- !u!1 &500906790
 GameObject:
   m_ObjectHideFlags: 0
@@ -915,6 +919,14 @@ MonoBehaviour:
         key: 97
       - modifiers: 00000000
         key: 276
+    - inputAction: 8
+      hotKeys:
+      - modifiers: 
+        key: 306
+      - modifiers: 
+        key: 305
+      - modifiers: 
+        key: 122
   - context: 1
     configs: []
 --- !u!1 &740345094

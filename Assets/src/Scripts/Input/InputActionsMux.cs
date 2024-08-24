@@ -23,6 +23,8 @@ namespace src.Scripts.Input
             {InputAction.SprintBack, MovementAction.SprintBack},
             {InputAction.SprintRight, MovementAction.SprintRight},
             {InputAction.SprintLeft, MovementAction.SprintLeft},
+            
+            {InputAction.Dash, MovementAction.Dash},
         };
         
         public void Start()
