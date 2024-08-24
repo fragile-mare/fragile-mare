@@ -5,7 +5,7 @@ using UnityEditor;
 using System;
 using System.IO;
 using System.Reflection;
-using Debug = src.Utils.Debug.Debug;
+using Debug = src.Utils.WDebug.Debug;
 
 [CustomEditor(typeof(Readme))]
 [InitializeOnLoad]

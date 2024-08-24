@@ -1,6 +1,6 @@
 using System.Diagnostics;
 
-namespace src.Utils.Debug
+namespace src.Utils.WDebug
 {
 	public static class Debug
 	{

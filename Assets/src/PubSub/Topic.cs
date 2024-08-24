@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Debug = src.Utils.Debug.Debug;
+using Debug = src.Utils.WDebug.Debug;
 
 namespace src.pubsub
 {

@@ -24,7 +24,7 @@ public class PlayerRotationByMouse : MonoBehaviour
     void Update()
     {
         var mouseRotation = Input.mousePosition;
-        //if (_oldRotation == mouseRotation) return;
+        if (_oldRotation == mouseRotation) return;
         
         // playerTransform.eulerAngles = @params.Rotation;
         // playerTransform.Rotate(@params.Rotation);

@@ -3,9 +3,9 @@ using UnityEngine;
 
 namespace src.Topics.General
 {
-    public class Movement : UnityStaticTopic<MovementParams>
+    public class MovementTopic : UnityDynamicTopic<MovementParams>
     {
-        protected override string TopicName => "general.movement";
+        public override string Suffix => ".movement";
     }
 
     public class MovementParams

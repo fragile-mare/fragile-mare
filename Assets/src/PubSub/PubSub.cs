@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.ComponentModel.Design;
-using src.Utils.Debug;
+using src.Utils.WDebug;
 
 namespace src.pubsub
 {
@@ -8,9 +8,14 @@ namespace src.pubsub
     {
         private static readonly ServiceContainer TopicsLists = new();
 
+        // todo: return interface that only can Publish and Delete from PubSub, SetValidators?
+        // todo: валидаторы где?? в продюсерах наверное, раз они в любом случае продюсят??
         public static Topic<T> CreateTopic<T>(string name)
         {
-            var topic = new Topic<T>(name);
+            var topic = FindTopic<T>(name);
+            if (topic != null) return topic;
+            
+            topic = new Topic<T>(name);
 
             AddTopic(topic, name);
 
@@ -33,20 +38,24 @@ namespace src.pubsub
             Debug.Log($"Topic is created. topic: \"{topic.Name}\".");
         }
 
+        // todo: return interface that only can Subscribe
         public static Topic<T> GetTopic<T>(string name)
+        {
+            return CreateTopic<T>(name);
+        }
+
+        private static Topic<T> FindTopic<T>(string name)
         {
             var gotList = (List<Topic<T>>)TopicsLists.GetService(typeof(List<Topic<T>>));
             if (gotList == null)
             {
-                Debug.LogWarning($"gotList in GetTopic is null. request_name: \"{name}\"");
-                // TODO: error
                 return null;
             }
                 
 
             var topic = gotList.Find(x => x.Name == name);
             
-            Debug.Log($"Topic was gotten. topic: \"{topic.Name}\" request_name: \"{name}\"");
+            if(topic != null) Debug.Log($"Topic was gotten. topic: \"{topic.Name}\" request_name: \"{name}\"");
 
             return topic;
         }

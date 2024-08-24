@@ -1,5 +1,6 @@
 using System;
 using src.pubsub;
+using src.Topics.General;
 using UnityEngine;
 
 namespace src.Scripts.Player
@@ -20,7 +21,8 @@ namespace src.Scripts.Player
         
         void Start()
         {
-            Topics.Player.PlayerCharacterMovement.Subscribe(@params =>
+            var playerMovementTopic = MovementTopic.GetTopic("player.character");
+            playerMovementTopic.Subscribe(@params =>
             {
                 if (_first)
                 {
@@ -32,7 +34,7 @@ namespace src.Scripts.Player
                 cameraTransform.position += @params.Move;
             }, out _characterMovementSub);
         }
-
+        
         private void OnDestroy()
         {
             _characterMovementSub.Unsubscribe();
