@@ -504,6 +504,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.04
+  sprintSpeed: 0.08
 --- !u!1 &500906790
 GameObject:
   m_ObjectHideFlags: 0
@@ -889,6 +890,30 @@ MonoBehaviour:
       - modifiers: 
         key: 97
       - modifiers: 
+        key: 276
+    - inputAction: 4
+      hotKeys:
+      - modifiers: 00000000
+        key: 119
+      - modifiers: 00000000
+        key: 273
+    - inputAction: 5
+      hotKeys:
+      - modifiers: 00000000
+        key: 115
+      - modifiers: 00000000
+        key: 274
+    - inputAction: 6
+      hotKeys:
+      - modifiers: 00000000
+        key: 100
+      - modifiers: 00000000
+        key: 275
+    - inputAction: 7
+      hotKeys:
+      - modifiers: 00000000
+        key: 97
+      - modifiers: 00000000
         key: 276
   - context: 1
     configs: []

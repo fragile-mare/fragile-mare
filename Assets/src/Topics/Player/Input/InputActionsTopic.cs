@@ -23,5 +23,10 @@ namespace src.Topics.Player.InputActions
         MoveBack,
         MoveRight,
         MoveLeft,
+        
+        SprintForward,
+        SprintBack,
+        SprintRight,
+        SprintLeft,
     }
 }

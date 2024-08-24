@@ -13,5 +13,10 @@ namespace src.Topics.General
         MoveBack,
         MoveRight,
         MoveLeft,
+        
+        SprintForward,
+        SprintBack,
+        SprintRight,
+        SprintLeft,
     }
 }

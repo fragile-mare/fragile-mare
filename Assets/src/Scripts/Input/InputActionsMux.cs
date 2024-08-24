@@ -18,6 +18,11 @@ namespace src.Scripts.Input
             {InputAction.MoveBack, MovementAction.MoveBack},
             {InputAction.MoveRight, MovementAction.MoveRight},
             {InputAction.MoveLeft, MovementAction.MoveLeft},
+            
+            {InputAction.SprintForward, MovementAction.SprintForward},
+            {InputAction.SprintBack, MovementAction.SprintBack},
+            {InputAction.SprintRight, MovementAction.SprintRight},
+            {InputAction.SprintLeft, MovementAction.SprintLeft},
         };
         
         public void Start()

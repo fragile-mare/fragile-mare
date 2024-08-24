@@ -1,3 +1,4 @@
+using System;
 using src.pubsub;
 using src.Topics.General;
 using src.Topics.Player.InputActions;
@@ -11,9 +12,15 @@ namespace src.Scripts.Character
         [SerializeField]
         private float speed = 1f;
         
-        private Transform _targetTransform;
+        [SerializeField]
+        private float sprintSpeed = 1f;
         
-        private Vector3 _moveInThisFrame = Vector3.zero;
+        private Transform _targetTransform;
+
+        private MoveState _forwardState = MoveState.None;
+        private MoveState _backState = MoveState.None;
+        private MoveState _rightState = MoveState.None;
+        private MoveState _leftState = MoveState.None;
 
         private Subscription _playerActionsSub;
 
@@ -41,17 +48,9 @@ namespace src.Scripts.Character
             });
 
             var movementActionsTopic = MovementActionsTopic.GetTopic(_topicPrefix);
-            movementActionsTopic.Subscribe(@params =>
+            movementActionsTopic.Subscribe(movementAction =>
             {
-                var move = GetMoveVector(@params);
-                if (move == Vector3.zero)
-                {
-                    Debug.LogError($"Unknown movement action type. type: \"{@params}\"");
-                }
-                
-                // todo: neg move and pos move, detect max, in update: pos + neg.
-                _moveInThisFrame += move;
-                Debug.Log(_moveInThisFrame.ToString());
+                SetMoveState(movementAction);
             }, out _playerActionsSub);
         }
         
@@ -59,16 +58,28 @@ namespace src.Scripts.Character
         {
             var pos = _targetTransform.position;
 
-            _movementTopic.Publish(new MovementParams 
-            {
-                Move = _moveInThisFrame,
-                OldPosition = pos
-            });
+            var move = Vector3.zero;
 
-            pos += _moveInThisFrame;
+            move += GetMoveVector(_forwardState, Vector3.forward);
+            move += GetMoveVector(_backState, Vector3.back);
+            move += GetMoveVector(_rightState, Vector3.right);
+            move += GetMoveVector(_leftState, Vector3.left);
+
+            pos += move;
             _targetTransform.position = pos;
             
-            _moveInThisFrame = Vector3.zero;
+            _movementTopic.Publish(new MovementParams 
+            {
+                Move = move,
+                OldPosition = pos
+            });
+            
+            Debug.Log(move.ToString());
+            
+            _forwardState = MoveState.None;
+            _backState = MoveState.None;
+            _rightState = MoveState.None;
+            _leftState = MoveState.None;
         }
 
         private void OnDestroy()
@@ -76,20 +87,57 @@ namespace src.Scripts.Character
             _playerActionsSub.Unsubscribe();
         }
 
-        public Vector3 GetMoveVector(MovementAction action)
+        public Vector3 GetMoveVector(MoveState state, Vector3 direction)
         {
-            return action switch
+            return state switch
             {
-                MovementAction.MoveForward => Vector3.forward * speed,
-                MovementAction.MoveBack => Vector3.back * speed,
-                MovementAction.MoveRight => Vector3.right * speed,
-                MovementAction.MoveLeft => Vector3.left * speed,
+                MoveState.None => Vector3.zero,
+                MoveState.Move => speed * direction,
+                MoveState.Sprint => sprintSpeed * direction,
                 _ => Vector3.zero
             };
         }
-
-        private static float AngleBetweenTwoPoints(Vector3 a, Vector3 b) {
-            return Mathf.Atan2(a.y - b.y, a.x - b.x) * Mathf.Rad2Deg;
+        
+        public void SetMoveState(MovementAction action)
+        {
+            switch (action)
+            {
+                case MovementAction.MoveForward:
+                    _forwardState = MoveState.Move;
+                    break;
+                case MovementAction.MoveBack:
+                    _backState = MoveState.Move;
+                    break;
+                case MovementAction.MoveRight:
+                    _rightState = MoveState.Move;
+                    break;
+                case MovementAction.MoveLeft:
+                    _leftState = MoveState.Move;
+                    break;
+                
+                case MovementAction.SprintForward:
+                    _forwardState = MoveState.Sprint;
+                    break;
+                case MovementAction.SprintBack:
+                    _backState = MoveState.Sprint;
+                    break;
+                case MovementAction.SprintRight:
+                    _rightState = MoveState.Sprint;
+                    break;
+                case MovementAction.SprintLeft:
+                    _leftState = MoveState.Sprint;
+                    break;
+                
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(action), action, null);
+            }
         }
+    }
+
+    public enum MoveState
+    {
+        None,
+        Move,
+        Sprint,
     }
 }
