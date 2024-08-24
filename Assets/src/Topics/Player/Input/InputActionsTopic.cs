@@ -17,6 +17,10 @@ namespace src.Topics.Player.InputActions
         }
     }
 
+    /// <summary>
+    /// При добавлении значений сюда, нужно их замаппить с конкретным action
+    /// в <see cref="Scripts.Input.InputActionsMux"/>.
+    /// </summary>
     public enum InputAction
     {
         MoveForward,

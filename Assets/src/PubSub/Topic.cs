@@ -104,6 +104,7 @@ namespace src.pubsub
             {
                 if(!enabled) return;
 
+                // todo: сделать передаваемыми в функцию
                 foreach (var validator in _validators)
                 {
                     if (!validator.Validate()) return;

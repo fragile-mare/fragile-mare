@@ -7,6 +7,10 @@ namespace src.Topics.General
         public override string Suffix => ".movement.actions";
     }
 
+    /// <summary>
+    /// При добавлении значений сюда, нужно их замаппить с InputAction
+    /// в <see cref="Scripts.Input.InputActionsMux"/>.
+    /// </summary>
     public enum MovementAction
     {
         MoveForward,
