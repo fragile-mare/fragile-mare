@@ -5,6 +5,7 @@ using src.pubsub;
 using src.Topics.General;
 using src.Topics.Player.InputActions;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Debug = src.Utils.WDebug.Debug;
 using Vector3 = UnityEngine.Vector3;
 
@@ -18,17 +19,8 @@ namespace src.Scripts.Character
         [SerializeField]
         private float sprintSpeed = 1f;
 
-        [SerializeField] [Min(0f)] 
-        private float dashDuration;
-
-        [SerializeField] [Min(0f)] 
-        private float dashSpeed;
-
-        [SerializeField] 
-        private int maxDashCount;
-
-        [SerializeField] [Min(0f)] 
-        private float oneDashRegenDuration;
+        [FormerlySerializedAs("dashConfig")] [SerializeField] 
+        private DashConfig dash;
         
         private Transform _targetTransform;
 
@@ -64,7 +56,7 @@ namespace src.Scripts.Character
             _topicPrefix = entity.topicPrefix;
             _targetTransform = entity.targetTransform;
 
-            _currentDashCount = maxDashCount;
+            _currentDashCount = dash.maxCount;
 
             _movementTopic = MovementTopic.CreateTopic(_topicPrefix);
             _movementTopic.Publish(new MovementParams 
@@ -93,7 +85,7 @@ namespace src.Scripts.Character
                 && _movementState == MovementState.Default)
             {
                 _movementState = MovementState.Dash;
-                _remainingDashDuration = dashDuration;
+                _remainingDashDuration = dash.duration;
             }
             else if (_sprintState == SprintState.Active
                      && _movementState == MovementState.Default)
@@ -166,13 +158,13 @@ namespace src.Scripts.Character
             _remainingDashDuration -= Time.deltaTime;
             if (_remainingDashDuration > 0)
             {
-                move *= dashSpeed;
+                move *= dash.speed;
                 return move;
             }
             
             if (_remainingDashDuration < 0 && Time.deltaTime > 0)
             {
-                move *= dashSpeed * (_remainingDashDuration + Time.deltaTime) / Time.deltaTime;
+                move *= dash.speed * (_remainingDashDuration + Time.deltaTime) / Time.deltaTime;
             }
 
             _currentDashCount--;
@@ -237,9 +229,9 @@ namespace src.Scripts.Character
         {
             _isDashRegenerationActive = true;
             
-            while (_currentDashCount < maxDashCount)
+            while (_currentDashCount < dash.maxCount)
             {
-                yield return new WaitForSeconds(oneDashRegenDuration);
+                yield return new WaitForSeconds(dash.oneRegenDuration);
                 _currentDashCount++;
             }
 
@@ -270,5 +262,21 @@ namespace src.Scripts.Character
     {
         None,
         Active,
+    }
+
+    [Serializable]
+    public class DashConfig
+    {
+        [SerializeField] [Min(0f)] 
+        public float duration;
+
+        [SerializeField] [Min(0f)] 
+        public float speed;
+
+        [SerializeField] 
+        public int maxCount;
+
+        [SerializeField] [Min(0f)] 
+        public float oneRegenDuration;
     }
 }

@@ -504,11 +504,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.04
-  sprintSpeed: 0.08
-  dashDuration: 0.15
-  dashSpeed: 0.25
-  maxDashCount: 5
-  oneDashRegenDuration: 1
+  sprintSpeed: 0.07
+  dash:
+    duration: 0.15
+    speed: 0.25
+    maxCount: 5
+    oneRegenDuration: 1
 --- !u!1 &500906790
 GameObject:
   m_ObjectHideFlags: 0
@@ -948,6 +949,9 @@ MonoBehaviour:
         pressType: 2
       - modifiers: 
         key: 304
+        pressType: 2
+      - modifiers: 
+        key: 324
         pressType: 2
   - context: 1
     configs: []
