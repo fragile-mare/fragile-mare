@@ -8,8 +8,6 @@ namespace src.Utils.HotKey
     [Serializable]
     public class HotKey
     {
-        // todo: добавить возможность указывать вариант нажатия кнопок: default, up, down.
-        
         /// Сюда входят модификаторы, такие как [shift], [ctrl], [alt].
         public List<ModifierKey> modifiers = new();
         
