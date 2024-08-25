@@ -946,6 +946,9 @@ MonoBehaviour:
       - modifiers: 
         key: 122
         pressType: 2
+      - modifiers: 
+        key: 304
+        pressType: 2
   - context: 1
     configs: []
 --- !u!1 &740345094

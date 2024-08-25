@@ -39,6 +39,8 @@ namespace src.Scripts.Character
         private MoveState _rightState = MoveState.None;
         private MoveState _leftState = MoveState.None;
 
+        private SprintState _sprintState = SprintState.None;
+
         private DashState _dashState = DashState.None;
         private int _currentDashCount = 0;
         private float _remainingDashDuration = 0;
@@ -93,6 +95,12 @@ namespace src.Scripts.Character
                 _movementState = MovementState.Dash;
                 _remainingDashDuration = dashDuration;
             }
+            else if (_sprintState == SprintState.Active
+                     && _movementState == MovementState.Default)
+            {
+                _movementState = MovementState.Sprint;
+                _sprintState = SprintState.Active;
+            }
 
             if (!_isDashRegenerationActive)
             {
@@ -103,6 +111,9 @@ namespace src.Scripts.Character
             {
                 case MovementState.Default:
                     move = DefaultMove(move);
+                    break;
+                case MovementState.Sprint:
+                    move = SprintMove(move);
                     break;
                 case MovementState.Dash:
                     move = DashMove(move);
@@ -125,6 +136,8 @@ namespace src.Scripts.Character
             _backState = MoveState.None;
             _rightState = MoveState.None;
             _leftState = MoveState.None;
+
+            _sprintState = SprintState.None;
             _dashState = DashState.None;
         }
 
@@ -137,7 +150,13 @@ namespace src.Scripts.Character
         {
             Debug.Log(move.ToString());
 
-            return move;
+            return move * speed;
+        }
+        
+        private Vector3 SprintMove(Vector3 move)
+        {
+            _movementState = MovementState.Default;
+            return move * sprintSpeed;
         }
 
         private Vector3 DashMove(Vector3 move)
@@ -167,8 +186,7 @@ namespace src.Scripts.Character
             return state switch
             {
                 MoveState.None => Vector3.zero,
-                MoveState.Move => speed * direction,
-                MoveState.Sprint => sprintSpeed * direction,
+                MoveState.Move => direction,
                 _ => Vector3.zero
             };
         }
@@ -177,35 +195,39 @@ namespace src.Scripts.Character
         {
             switch (action)
             {
-                case MovementAction.MoveForward:
+                case MovementAction.MoveForward or MovementAction.SprintForward:
                     _forwardState = MoveState.Move;
                     break;
-                case MovementAction.MoveBack:
+                case MovementAction.MoveBack or MovementAction.SprintBack:
                     _backState = MoveState.Move;
                     break;
-                case MovementAction.MoveRight:
+                case MovementAction.MoveRight or MovementAction.SprintRight:
                     _rightState = MoveState.Move;
                     break;
-                case MovementAction.MoveLeft:
+                case MovementAction.MoveLeft or MovementAction.SprintLeft:
                     _leftState = MoveState.Move;
+                    break;
+            }
+
+            switch (action)
+            {
+                case MovementAction.MoveForward:
+                case MovementAction.MoveBack:
+                case MovementAction.MoveRight:
+                case MovementAction.MoveLeft:
                     break;
                 
                 case MovementAction.SprintForward:
-                    _forwardState = MoveState.Sprint;
-                    break;
                 case MovementAction.SprintBack:
-                    _backState = MoveState.Sprint;
-                    break;
                 case MovementAction.SprintRight:
-                    _rightState = MoveState.Sprint;
-                    break;
                 case MovementAction.SprintLeft:
-                    _leftState = MoveState.Sprint;
+                    _sprintState = SprintState.Active;
                     break;
                 
                 case MovementAction.Dash:
                     _dashState = DashState.Active;
                     break;
+                
                 default:
                     throw new ArgumentOutOfRangeException(nameof(action), action, null);
             }
@@ -228,6 +250,7 @@ namespace src.Scripts.Character
     public enum MovementState
     {
         Default,
+        Sprint,
         Dash,
     }
 
@@ -235,7 +258,12 @@ namespace src.Scripts.Character
     {
         None,
         Move,
-        Sprint,
+    }
+    
+    public enum SprintState
+    {
+        None,
+        Active,
     }
     
     public enum DashState
