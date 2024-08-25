@@ -505,8 +505,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.04
   sprintSpeed: 0.08
-  dashDuration: 0.25
-  dashSpeed: 0.2
+  dashDuration: 0.15
+  dashSpeed: 0.25
   maxDashCount: 5
   oneDashRegenDuration: 1
 --- !u!1 &500906790
@@ -875,58 +875,77 @@ MonoBehaviour:
       hotKeys:
       - modifiers: 
         key: 119
+        pressType: 0
       - modifiers: 
         key: 273
+        pressType: 0
     - inputAction: 1
       hotKeys:
       - modifiers: 
         key: 115
+        pressType: 0
       - modifiers: 
         key: 274
+        pressType: 0
     - inputAction: 2
       hotKeys:
       - modifiers: 
         key: 100
+        pressType: 0
       - modifiers: 
         key: 275
+        pressType: 0
     - inputAction: 3
       hotKeys:
       - modifiers: 
         key: 97
+        pressType: 0
       - modifiers: 
         key: 276
+        pressType: 0
     - inputAction: 4
       hotKeys:
       - modifiers: 00000000
         key: 119
+        pressType: 0
       - modifiers: 00000000
         key: 273
+        pressType: 0
     - inputAction: 5
       hotKeys:
       - modifiers: 00000000
         key: 115
+        pressType: 0
       - modifiers: 00000000
         key: 274
+        pressType: 0
     - inputAction: 6
       hotKeys:
       - modifiers: 00000000
         key: 100
+        pressType: 0
       - modifiers: 00000000
         key: 275
+        pressType: 0
     - inputAction: 7
       hotKeys:
       - modifiers: 00000000
         key: 97
+        pressType: 0
       - modifiers: 00000000
         key: 276
+        pressType: 0
     - inputAction: 8
       hotKeys:
       - modifiers: 
         key: 306
+        pressType: 2
       - modifiers: 
         key: 305
+        pressType: 2
       - modifiers: 
         key: 122
+        pressType: 2
   - context: 1
     configs: []
 --- !u!1 &740345094

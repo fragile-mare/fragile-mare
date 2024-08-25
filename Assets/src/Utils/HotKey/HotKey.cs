@@ -8,18 +8,23 @@ namespace src.Utils.HotKey
     [Serializable]
     public class HotKey
     {
+        // todo: добавить возможность указывать вариант нажатия кнопок: default, up, down.
+        
         /// Сюда входят модификаторы, такие как [shift], [ctrl], [alt].
         public List<ModifierKey> modifiers = new();
         
         /// Здесь назначается главная кнопка.
         public KeyCode key;
+
+        public PressType pressType = PressType.Default;
         
         /// Проверяет, нажато ли сочетание клавиш. Должна быть нажата главная кнопка, то есть *key*, и
         /// все модификаторы, то есть *modifiers*.
         public bool IsPressed()
         {
             if (key == KeyCode.None) return false;
-            return Input.GetKey(key) && modifiers.All(Modifier.IsModifierPressed);
+            var checker = pressType.Checker();
+            return IsPressed(checker);
         }
 
         /// Чем конкретнее сочетание клавиш, тем больше приоритет (например, [ctrl+shift+w] > [shift+w] > [w]).
@@ -29,6 +34,33 @@ namespace src.Utils.HotKey
         {
             if (key == KeyCode.None) return 0;
             return modifiers.Count + 1;
+        }
+        
+        private bool IsPressed(Func<KeyCode, bool> checker)
+        {
+            if (key == KeyCode.None) return false;
+            return checker(key) && modifiers.All(Modifier.IsModifierPressed);
+        }
+    }
+
+    public enum PressType
+    {
+        Default,
+        Up,
+        Down,
+    }
+
+    public static class PressTypeExtension
+    {
+        public static Func<KeyCode, bool> Checker(this PressType pressType)
+        {
+            return pressType switch
+            {
+                PressType.Default => Input.GetKey,
+                PressType.Up => Input.GetKeyUp,
+                PressType.Down => Input.GetKeyDown,
+                _ => throw new ArgumentOutOfRangeException(nameof(pressType), pressType, null)
+            };
         }
     }
 
