@@ -3,14 +3,14 @@ using UnityEngine;
 
 namespace src.Topics.General
 {
-    public class Rotation : UnityStaticTopic<RotationParams>
+    public class RotationTopic : UnityDynamicTopic<RotationParams>
     {
-        protected override string TopicName => "general.rotation";
+        public override string Suffix => ".rotation";
     }
 
     public class RotationParams
     {
-        public Vector3 Rotation;
+        public Quaternion Rotation;
 
         public override string ToString()
         {

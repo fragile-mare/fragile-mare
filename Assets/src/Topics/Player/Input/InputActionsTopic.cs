@@ -1,6 +1,6 @@
 using src.Utils.UnityTopic;
 
-namespace src.Topics.Player.InputActions
+namespace src.Topics.Player.Input
 {
     public class InputActionsTopic : UnityStaticTopic<InputActionParams>
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using src.pubsub;
 using src.Topics.Game;
-using src.Topics.Player.InputActions;
+using src.Topics.Player.Input;
 using src.Utils.GameContext;
 using src.Utils.HotKey;
 using UnityEngine;

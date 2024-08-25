@@ -9,7 +9,7 @@ namespace src.pubsub
         private static readonly ServiceContainer TopicsLists = new();
 
         // todo: return interface that only can Publish and Delete from PubSub, SetValidators?
-        // todo: валидаторы где?? в продюсерах наверное, раз они в любом случае продюсят??
+        // todo: валидаторы где?? в сабскрайберах
         public static Topic<T> CreateTopic<T>(string name)
         {
             var topic = FindTopic<T>(name);

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using src.pubsub;
 using src.Topics.General;
-using src.Topics.Player.InputActions;
+using src.Topics.Player.Input;
 using UnityEngine;
 using Debug = src.Utils.WDebug.Debug;
 
