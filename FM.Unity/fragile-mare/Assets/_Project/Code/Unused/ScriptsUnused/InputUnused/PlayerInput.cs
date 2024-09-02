@@ -17,7 +17,7 @@ namespace _Project.Code.Unused.ScriptsUnused.InputUnused
         [FormerlySerializedAs("actionInputsByContexts")] [SerializeField] 
         private List<ContextualActionConfigs> configs;
 
-        private GameContext _currContext = GameContext.Game;
+        private UtilsUnused.GameContextUnused.GameContext _currContext = UtilsUnused.GameContextUnused.GameContext.Game;
         private Subscription _contextSub;
 
         // при изменении игрового контекста - обновлять
@@ -82,7 +82,7 @@ namespace _Project.Code.Unused.ScriptsUnused.InputUnused
         }
 
         /// Выбираем правила сочетаний клавиш в зависимости от игрового контекста (игра, меню, инвентарь и т.д.)
-        public List<ActionConfig> GetActionConfigs(GameContext context)
+        public List<ActionConfig> GetActionConfigs(UtilsUnused.GameContextUnused.GameContext context)
         {
             return configs.
                 Find(x => x.context == context).configs;
@@ -122,7 +122,7 @@ namespace _Project.Code.Unused.ScriptsUnused.InputUnused
     [Obsolete("Unused.")]
     public class ContextualActionConfigs
     {
-        public GameContext context;
+        public UtilsUnused.GameContextUnused.GameContext context;
         [FormerlySerializedAs("actionInputs")] public List<ActionConfig> configs;
     }
 }

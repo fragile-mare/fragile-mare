@@ -13,6 +13,6 @@ namespace _Project.Code.Unused.TopicsUnused.GameUnused
     [Obsolete("Unused.")]
     public class ContextParams
     {
-        public GameContext Context;
+        public UtilsUnused.GameContextUnused.GameContext Context;
     }
 }
