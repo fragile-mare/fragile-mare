@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace _Project.Code.Infastrature
 {
-    public class GameStateMachine
+    public class GameStateMachine : IGameStateMachine
     {
         private Dictionary<Type, IState> _states;
         private IState _activeState;
