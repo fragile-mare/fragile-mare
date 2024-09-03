@@ -106,4 +106,4 @@ Thumbs.db
 Desktop.ini
 .DS_Store
 
-Code/**/.idea
+/[Aa]ssets/Code/**/.idea
