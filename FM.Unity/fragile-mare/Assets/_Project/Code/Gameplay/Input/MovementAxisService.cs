@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace _Project.Code.Game.Input
+namespace _Project.Code.Gameplay.Input
 {
     public class MovementAxisService : IMovementAxisService
     {

@@ -1,6 +1,6 @@
 ﻿using Zenject;
 
-namespace _Project.Code.Infastrature
+namespace _Project.Code.Infrastructure
 {
     public class BootstrapInstaller : MonoInstaller, IInitializable
     {

@@ -1,4 +1,4 @@
-namespace _Project.Code.Infastrature
+namespace _Project.Code.Infrastructure
 {
     public interface IState
     {
