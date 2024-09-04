@@ -1,4 +1,5 @@
 ﻿using _Project.Code.Common.Services.Time;
+using _Project.Code.Gameplay.Cameras.Providers;
 using _Project.Code.Gameplay.Input.Services;
 using _Project.Code.Infrastructure.Systems;
 using Zenject;
@@ -30,6 +31,7 @@ namespace _Project.Code.Infrastructure.Installers
         {
             Container.Bind<ITimeService>().To<UnityTimeService>().AsSingle();
             Container.Bind<IInputAxisService>().To<InputAxisService>().AsSingle();
+            Container.Bind<ICameraProvider>().To<CameraProvider>().AsSingle();
         }
 
         public void Initialize()
