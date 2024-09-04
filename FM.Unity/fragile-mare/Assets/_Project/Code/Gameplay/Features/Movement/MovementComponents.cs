@@ -9,6 +9,6 @@ namespace _Project.Code.Gameplay.Features.Movement
     [Game] public class Moving : IComponent { }
     
     [Game] public class CanSprint : IComponent { }
-    [Game] public class Sprinting : IComponent {  }
+    [Game] public class Sprinting : IComponent { }
     [Game] public class SprintSpeed : IComponent { public float Value; }
 }

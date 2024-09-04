@@ -7,4 +7,5 @@ namespace _Project.Code.Gameplay.Input
     [Game] public class InputMovementAxis : IComponent { public Vector2 Value; }
     
     [Game] public class SprintButtonPressed : IComponent { }
+    [Game] public class DashButtonPressed : IComponent { }
 }

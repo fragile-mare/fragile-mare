@@ -8,9 +8,14 @@ namespace _Project.Code.Gameplay.Features.Character.Registrars
     {
         public float speed;
         public float sprintSpeed;
+        public float dashSpeed;
+        public float dashDuration;
+        public int dashMaxCount;
+        public float dashRegenDuration;
+        public int dashRegenAmount;
         
         private GameEntity _entity;
-
+        
         private void Awake()
         {
             _entity = CreateEntity
@@ -20,8 +25,17 @@ namespace _Project.Code.Gameplay.Features.Character.Registrars
                 .AddDirection(Vector2.zero)
                 .AddSpeed(speed)
                 .AddSprintSpeed(sprintSpeed)
+                .AddDashSpeed(dashSpeed)
+                .AddDashDuration(dashDuration)
+                .AddDashTimer(0)
+                .AddDashMaxCount(dashMaxCount)
+                .AddDashCurrentCount(dashMaxCount)
+                .AddDashRegenDuration(dashRegenDuration)
+                .AddDashRegenTimer(dashRegenDuration)
+                .AddDashRegenAmount(dashRegenAmount)
                 .With(x => x.isCharacter = true)
-                .With(x => x.isCanSprint = true);
+                .With(x => x.isCanSprint = true)
+                .With(x => x.isCanDash = true);
         }
     }
 }

@@ -3,5 +3,6 @@
     public interface IInputButtonService
     {
         bool IsSprintPressed();
+        bool IsDashPressed();
     }
 }

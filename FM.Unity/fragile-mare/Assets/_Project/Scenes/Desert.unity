@@ -502,6 +502,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 4
   sprintSpeed: 10
+  dashSpeed: 28
+  dashDuration: 0.2
+  dashMaxCount: 5
+  dashRegenDuration: 3
+  dashRegenAmount: 1
 --- !u!4 &1244811638
 Transform:
   m_ObjectHideFlags: 0
