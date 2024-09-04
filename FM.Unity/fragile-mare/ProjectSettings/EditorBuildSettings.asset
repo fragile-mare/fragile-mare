@@ -6,12 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/_Project/Scenes/Initial.unity
+    guid: 26d94d1f5d9b24e4f89a30f7ca05533d
+  - enabled: 1
     path: Assets/_Project/Scenes/Desert.unity
     guid: ca3f645657dcd7645b5920d6cb82bc32
   - enabled: 0
     path: Assets/_Project/Scenes/Unused/DeprecatedScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 1
-    path: Assets/_Project/Scenes/Initial.unity
-    guid: 26d94d1f5d9b24e4f89a30f7ca05533d
   m_configObjects: {}
