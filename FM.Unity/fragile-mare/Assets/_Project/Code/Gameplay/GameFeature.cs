@@ -3,7 +3,6 @@ using _Project.Code.Gameplay.Features.Character;
 using _Project.Code.Gameplay.Features.Movement;
 using _Project.Code.Gameplay.Input;
 using _Project.Code.Infrastructure.Systems;
-using UnityEngine;
 
 namespace _Project.Code.Gameplay
 {
