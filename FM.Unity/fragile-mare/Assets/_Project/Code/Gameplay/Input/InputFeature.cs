@@ -9,6 +9,7 @@ namespace _Project.Code.Gameplay.Input
         {
             Add(systems.Create<InitializeInputSystem>());
             Add(systems.Create<EmitInputSystem>());
+            Add(systems.Create<PressSprintButtonSystem>());
         }
     }
 }

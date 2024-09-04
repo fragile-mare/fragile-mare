@@ -12,24 +12,32 @@ public static class GameComponentsLookup {
     public const int Transform = 1;
     public const int WorldPosition = 2;
     public const int Character = 3;
-    public const int Direction = 4;
-    public const int Moving = 5;
-    public const int Speed = 6;
-    public const int Input = 7;
-    public const int InputMovementAxis = 8;
+    public const int CanSprint = 4;
+    public const int Direction = 5;
+    public const int Moving = 6;
+    public const int Speed = 7;
+    public const int Sprinting = 8;
+    public const int SprintSpeed = 9;
+    public const int Input = 10;
+    public const int InputMovementAxis = 11;
+    public const int SprintButtonPressed = 12;
 
-    public const int TotalComponents = 9;
+    public const int TotalComponents = 13;
 
     public static readonly string[] componentNames = {
         "Id",
         "Transform",
         "WorldPosition",
         "Character",
+        "CanSprint",
         "Direction",
         "Moving",
         "Speed",
+        "Sprinting",
+        "SprintSpeed",
         "Input",
-        "InputMovementAxis"
+        "InputMovementAxis",
+        "SprintButtonPressed"
     };
 
     public static readonly System.Type[] componentTypes = {
@@ -37,10 +45,14 @@ public static class GameComponentsLookup {
         typeof(_Project.Code.Gameplay.Common.TransformComponent),
         typeof(_Project.Code.Gameplay.Common.WorldPosition),
         typeof(_Project.Code.Gameplay.Features.Character.Character),
+        typeof(_Project.Code.Gameplay.Features.Movement.CanSprint),
         typeof(_Project.Code.Gameplay.Features.Movement.Direction),
         typeof(_Project.Code.Gameplay.Features.Movement.Moving),
         typeof(_Project.Code.Gameplay.Features.Movement.Speed),
+        typeof(_Project.Code.Gameplay.Features.Movement.Sprinting),
+        typeof(_Project.Code.Gameplay.Features.Movement.SprintSpeed),
         typeof(_Project.Code.Gameplay.Input.Input),
-        typeof(_Project.Code.Gameplay.Input.InputMovementAxis)
+        typeof(_Project.Code.Gameplay.Input.InputMovementAxis),
+        typeof(_Project.Code.Gameplay.Input.SprintButtonPressed)
     };
 }

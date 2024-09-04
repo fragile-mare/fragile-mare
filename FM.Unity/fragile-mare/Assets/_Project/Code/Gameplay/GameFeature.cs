@@ -12,8 +12,8 @@ namespace _Project.Code.Gameplay
         public GameFeature(ISystemsFactory systems)
         {
             Add(systems.Create<InputFeature>());
-            Add(systems.Create<MovementFeature>());
             Add(systems.Create<CharacterFeature>());
+            Add(systems.Create<MovementFeature>());
             Add(systems.Create<CameraFeature>());
         }
     }

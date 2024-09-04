@@ -2,12 +2,12 @@
 
 namespace _Project.Code.Gameplay.Features.Character.Systems
 {
-    public class SetCharacterDirectionByInputSystem : IExecuteSystem
+    public class SetCharacterSprintByInputSystem : IExecuteSystem
     {
         private readonly IGroup<GameEntity> _characters;
         private readonly IGroup<GameEntity> _inputs;
 
-        public SetCharacterDirectionByInputSystem(GameContext game)
+        public SetCharacterSprintByInputSystem(GameContext game)
         {
             _characters = game.GetGroup(GameMatcher.Character);
             _inputs = game.GetGroup(GameMatcher.Input);
@@ -18,12 +18,7 @@ namespace _Project.Code.Gameplay.Features.Character.Systems
             foreach (var input in _inputs)
             foreach (var character in _characters)
             {
-                character.isMoving = input.hasInputMovementAxis;
-
-                if (input.hasInputMovementAxis)
-                {
-                    character.ReplaceDirection(input.InputMovementAxis.normalized);
-                }
+                character.isSprinting = input.isSprintButtonPressed;
             }
         }
     }

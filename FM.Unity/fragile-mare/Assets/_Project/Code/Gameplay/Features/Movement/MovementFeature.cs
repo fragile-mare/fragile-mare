@@ -8,7 +8,10 @@ namespace _Project.Code.Gameplay.Features.Movement
     {
         public MovementFeature(ISystemsFactory systems)
         {
+            // не менять местами, т.к. sprint перекрывает move с помощью установки Moving = false.
+            Add(systems.Create<DirectionDeltaSprintSystem>());
             Add(systems.Create<DirectionDeltaMoveSystem>());
+            
             Add(systems.Create<UpdateTransformPositionSystem>());
         }
     }

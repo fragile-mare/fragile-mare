@@ -8,6 +8,7 @@ namespace _Project.Code.Gameplay.Features.Character
         public CharacterFeature(ISystemsFactory systems)
         {
             Add(systems.Create<SetCharacterDirectionByInputSystem>());
+            Add(systems.Create<SetCharacterSprintByInputSystem>());
         }
     }
 }

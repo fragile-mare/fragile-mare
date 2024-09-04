@@ -7,7 +7,7 @@ namespace _Project.Code.Gameplay.Input.Services
         public float HorizontalAxis => UnityEngine.Input.GetAxis("Horizontal");
         public float VerticalAxis => UnityEngine.Input.GetAxis("Vertical");
 
-        public double Epsilon = 0.0001;
+        public const double Epsilon = 0.0001;
         
         public Vector2 GetAxisInput()
         {

@@ -7,6 +7,7 @@ namespace _Project.Code.Gameplay.Features.Character.Registrars
     public class CharacterRegistrar : MonoBehaviour
     {
         public float speed;
+        public float sprintSpeed;
         
         private GameEntity _entity;
 
@@ -18,7 +19,9 @@ namespace _Project.Code.Gameplay.Features.Character.Registrars
                 .AddWorldPosition(transform.position)
                 .AddDirection(Vector2.zero)
                 .AddSpeed(speed)
-                .With(x => x.isCharacter = true);
+                .AddSprintSpeed(sprintSpeed)
+                .With(x => x.isCharacter = true)
+                .With(x => x.isCanSprint = true);
         }
     }
 }
