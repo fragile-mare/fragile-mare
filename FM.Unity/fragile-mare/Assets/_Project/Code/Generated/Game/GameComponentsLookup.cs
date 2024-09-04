@@ -12,22 +12,22 @@ public static class GameComponentsLookup {
     public const int Transform = 1;
     public const int WorldPosition = 2;
     public const int Character = 3;
-    public const int CanSprint = 4;
-    public const int CanDash = 5;
-    public const int DashActivated = 6;
-    public const int DashCurrentCount = 7;
-    public const int DashDuration = 8;
-    public const int Dashing = 9;
-    public const int DashMaxCount = 10;
-    public const int DashRegenAmount = 11;
-    public const int DashRegenAmountToApply = 12;
-    public const int DashRegenDuration = 13;
-    public const int DashRegenTimer = 14;
-    public const int DashSpeed = 15;
-    public const int DashTimer = 16;
-    public const int Direction = 17;
-    public const int Moving = 18;
-    public const int Speed = 19;
+    public const int CanDash = 4;
+    public const int DashActivated = 5;
+    public const int DashCurrentCount = 6;
+    public const int DashDuration = 7;
+    public const int Dashing = 8;
+    public const int DashMaxCount = 9;
+    public const int DashRegenAmount = 10;
+    public const int DashRegenAmountToApply = 11;
+    public const int DashRegenDuration = 12;
+    public const int DashRegenTimer = 13;
+    public const int DashSpeed = 14;
+    public const int DashTimer = 15;
+    public const int Direction = 16;
+    public const int Moving = 17;
+    public const int Speed = 18;
+    public const int CanSprint = 19;
     public const int Sprinting = 20;
     public const int SprintSpeed = 21;
     public const int DashButtonPressed = 22;
@@ -42,7 +42,6 @@ public static class GameComponentsLookup {
         "Transform",
         "WorldPosition",
         "Character",
-        "CanSprint",
         "CanDash",
         "DashActivated",
         "DashCurrentCount",
@@ -58,6 +57,7 @@ public static class GameComponentsLookup {
         "Direction",
         "Moving",
         "Speed",
+        "CanSprint",
         "Sprinting",
         "SprintSpeed",
         "DashButtonPressed",
@@ -71,7 +71,6 @@ public static class GameComponentsLookup {
         typeof(_Project.Code.Gameplay.Common.TransformComponent),
         typeof(_Project.Code.Gameplay.Common.WorldPosition),
         typeof(_Project.Code.Gameplay.Features.Character.Character),
-        typeof(_Project.Code.Gameplay.Features.Movement.CanSprint),
         typeof(_Project.Code.Gameplay.Features.Movement.Dash.CanDash),
         typeof(_Project.Code.Gameplay.Features.Movement.Dash.DashActivated),
         typeof(_Project.Code.Gameplay.Features.Movement.Dash.DashCurrentCount),
@@ -85,10 +84,11 @@ public static class GameComponentsLookup {
         typeof(_Project.Code.Gameplay.Features.Movement.Dash.DashSpeed),
         typeof(_Project.Code.Gameplay.Features.Movement.Dash.DashTimer),
         typeof(_Project.Code.Gameplay.Features.Movement.Direction),
-        typeof(_Project.Code.Gameplay.Features.Movement.Moving),
-        typeof(_Project.Code.Gameplay.Features.Movement.Speed),
-        typeof(_Project.Code.Gameplay.Features.Movement.Sprinting),
-        typeof(_Project.Code.Gameplay.Features.Movement.SprintSpeed),
+        typeof(_Project.Code.Gameplay.Features.Movement.Move.Moving),
+        typeof(_Project.Code.Gameplay.Features.Movement.Move.Speed),
+        typeof(_Project.Code.Gameplay.Features.Movement.Sprint.CanSprint),
+        typeof(_Project.Code.Gameplay.Features.Movement.Sprint.Sprinting),
+        typeof(_Project.Code.Gameplay.Features.Movement.Sprint.SprintSpeed),
         typeof(_Project.Code.Gameplay.Input.DashButtonPressed),
         typeof(_Project.Code.Gameplay.Input.Input),
         typeof(_Project.Code.Gameplay.Input.InputMovementAxis),

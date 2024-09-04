@@ -33,13 +33,13 @@ public sealed partial class GameMatcher {
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    public _Project.Code.Gameplay.Features.Movement.SprintSpeed sprintSpeed { get { return (_Project.Code.Gameplay.Features.Movement.SprintSpeed)GetComponent(GameComponentsLookup.SprintSpeed); } }
+    public _Project.Code.Gameplay.Features.Movement.Sprint.SprintSpeed sprintSpeed { get { return (_Project.Code.Gameplay.Features.Movement.Sprint.SprintSpeed)GetComponent(GameComponentsLookup.SprintSpeed); } }
     public float SprintSpeed { get { return sprintSpeed.Value; } }
     public bool hasSprintSpeed { get { return HasComponent(GameComponentsLookup.SprintSpeed); } }
 
     public GameEntity AddSprintSpeed(float newValue) {
         var index = GameComponentsLookup.SprintSpeed;
-        var component = (_Project.Code.Gameplay.Features.Movement.SprintSpeed)CreateComponent(index, typeof(_Project.Code.Gameplay.Features.Movement.SprintSpeed));
+        var component = (_Project.Code.Gameplay.Features.Movement.Sprint.SprintSpeed)CreateComponent(index, typeof(_Project.Code.Gameplay.Features.Movement.Sprint.SprintSpeed));
         component.Value = newValue;
         AddComponent(index, component);
         return this;
@@ -47,7 +47,7 @@ public partial class GameEntity {
 
     public GameEntity ReplaceSprintSpeed(float newValue) {
         var index = GameComponentsLookup.SprintSpeed;
-        var component = (_Project.Code.Gameplay.Features.Movement.SprintSpeed)CreateComponent(index, typeof(_Project.Code.Gameplay.Features.Movement.SprintSpeed));
+        var component = (_Project.Code.Gameplay.Features.Movement.Sprint.SprintSpeed)CreateComponent(index, typeof(_Project.Code.Gameplay.Features.Movement.Sprint.SprintSpeed));
         component.Value = newValue;
         ReplaceComponent(index, component);
         return this;
