@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using _Project.Code.Common.Extensions;
+using UnityEngine;
 
 namespace _Project.Code.Gameplay.Cameras.Providers
 {
@@ -23,9 +24,7 @@ namespace _Project.Code.Gameplay.Cameras.Providers
         
         public Transform SetWorldXZ(float x, float z)
         {
-            var transform = MainCamera.transform;
-            transform.position = new Vector3(x + _offset.x, transform.position.y, z + _offset.z);
-            return transform;
+            return MainCamera.transform.SetWorldXZ(x + _offset.x, z + _offset.z);
         }
     }
 }
