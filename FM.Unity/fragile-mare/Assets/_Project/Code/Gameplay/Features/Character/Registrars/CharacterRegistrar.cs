@@ -34,6 +34,7 @@ namespace _Project.Code.Gameplay.Features.Character.Registrars
                 .AddDashRegenTimer(dashRegenDuration)
                 .AddDashRegenAmount(dashRegenAmount)
                 .With(x => x.isCharacter = true)
+                .With(x => x.isCanMove = true)
                 .With(x => x.isCanSprint = true)
                 .With(x => x.isCanDash = true);
         }

@@ -25,17 +25,18 @@ public static class GameComponentsLookup {
     public const int DashSpeed = 14;
     public const int DashTimer = 15;
     public const int Direction = 16;
-    public const int Moving = 17;
-    public const int Speed = 18;
-    public const int CanSprint = 19;
-    public const int Sprinting = 20;
-    public const int SprintSpeed = 21;
-    public const int DashButtonPressed = 22;
-    public const int Input = 23;
-    public const int InputMovementAxis = 24;
-    public const int SprintButtonPressed = 25;
+    public const int CanMove = 17;
+    public const int Moving = 18;
+    public const int Speed = 19;
+    public const int CanSprint = 20;
+    public const int Sprinting = 21;
+    public const int SprintSpeed = 22;
+    public const int DashButtonPressed = 23;
+    public const int Input = 24;
+    public const int InputMovementAxis = 25;
+    public const int SprintButtonPressed = 26;
 
-    public const int TotalComponents = 26;
+    public const int TotalComponents = 27;
 
     public static readonly string[] componentNames = {
         "Id",
@@ -55,6 +56,7 @@ public static class GameComponentsLookup {
         "DashSpeed",
         "DashTimer",
         "Direction",
+        "CanMove",
         "Moving",
         "Speed",
         "CanSprint",
@@ -84,6 +86,7 @@ public static class GameComponentsLookup {
         typeof(_Project.Code.Gameplay.Features.Movement.Dash.DashSpeed),
         typeof(_Project.Code.Gameplay.Features.Movement.Dash.DashTimer),
         typeof(_Project.Code.Gameplay.Features.Movement.Direction),
+        typeof(_Project.Code.Gameplay.Features.Movement.Move.CanMove),
         typeof(_Project.Code.Gameplay.Features.Movement.Move.Moving),
         typeof(_Project.Code.Gameplay.Features.Movement.Move.Speed),
         typeof(_Project.Code.Gameplay.Features.Movement.Sprint.CanSprint),

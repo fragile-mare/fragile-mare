@@ -13,6 +13,7 @@ namespace _Project.Code.Gameplay.Features.Movement.Move
         {
             _time = time;
             _movers = game.GetGroup(GameMatcher.AllOf(
+                GameMatcher.CanMove,
                 GameMatcher.Moving,
                 GameMatcher.WorldPosition,
                 GameMatcher.Speed,
