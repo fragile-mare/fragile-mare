@@ -1,4 +1,5 @@
-﻿using _Project.Code.Common.Entity;
+﻿using System;
+using _Project.Code.Common.Entity;
 using _Project.Code.Common.Extensions;
 using UnityEngine;
 
@@ -37,6 +38,11 @@ namespace _Project.Code.Gameplay.Features.Character.Registrars
                 .With(x => x.isCanMove = true)
                 .With(x => x.isCanSprint = true)
                 .With(x => x.isCanDash = true);
+        }
+
+        private void OnDestroy()
+        {
+            _entity.Destroy();
         }
     }
 }
