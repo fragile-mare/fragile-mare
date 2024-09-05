@@ -1,7 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using _Project.Code.Infrastructure.States.Factory;
+using _Project.Code.Infrastructure.States.GameStates;
 
-namespace _Project.Code.Infrastructure.States
+namespace _Project.Code.Infrastructure.States.StateMachine
 {
     public class GameStateMachine : IGameStateMachine
     {

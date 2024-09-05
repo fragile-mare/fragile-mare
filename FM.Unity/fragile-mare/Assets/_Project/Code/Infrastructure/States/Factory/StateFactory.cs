@@ -1,6 +1,7 @@
-﻿using Zenject;
+﻿using _Project.Code.Infrastructure.States.GameStates;
+using Zenject;
 
-namespace _Project.Code.Infrastructure.States
+namespace _Project.Code.Infrastructure.States.Factory
 {
     public class StateFactory : IStateFactory
     {

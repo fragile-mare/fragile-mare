@@ -1,7 +1,7 @@
 ﻿using _Project.Code.Infrastructure.Scenes;
-using UnityEngine.SceneManagement;
+using _Project.Code.Infrastructure.States.StateMachine;
 
-namespace _Project.Code.Infrastructure.States
+namespace _Project.Code.Infrastructure.States.GameStates
 {
     public class BootstrapState : IState
     {
