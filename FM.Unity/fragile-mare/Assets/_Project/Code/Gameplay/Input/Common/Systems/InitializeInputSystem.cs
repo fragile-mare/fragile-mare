@@ -1,14 +1,22 @@
 ﻿using _Project.Code.Common.Entity;
+using _Project.Code.Common.Extensions;
 using Entitas;
 
 namespace _Project.Code.Gameplay.Input.Common.Systems
 {
-    public class InitializeInputSystem : IInitializeSystem
+    public class InitializeInputSystem : IInitializeSystem, ITearDownSystem
     {
+        private GameEntity _input;
+
         public void Initialize()
         {
-            CreateEntity.Empty()
-                .isInput = true;
+            _input = CreateEntity.Empty()
+                .With(x => x.isInput = true);
+        }
+
+        public void TearDown()
+        {
+            _input.Destroy();
         }
     }
 }
