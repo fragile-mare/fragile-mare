@@ -1,7 +1,7 @@
-﻿using _Project.Code.Gameplay.Input.Services;
+﻿using _Project.Code.Gameplay.Input.Axis.Services;
 using Entitas;
 
-namespace _Project.Code.Gameplay.Input.Systems
+namespace _Project.Code.Gameplay.Input.Axis.Systems
 {
     public class EmitInputSystem : IExecuteSystem
     {

@@ -1,8 +1,7 @@
-﻿using _Project.Code.Gameplay.Input.Services;
+﻿using _Project.Code.Gameplay.Input.Button.Services;
 using Entitas;
-using UnityEngine;
 
-namespace _Project.Code.Gameplay.Input.Systems
+namespace _Project.Code.Gameplay.Input.Button.Systems
 {
     public class PressSprintButtonSystem : IExecuteSystem
     {
