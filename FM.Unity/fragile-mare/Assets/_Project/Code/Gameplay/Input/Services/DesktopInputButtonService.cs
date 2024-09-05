@@ -2,7 +2,7 @@
 
 namespace _Project.Code.Gameplay.Input.Services
 {
-    public class InputButtonService : IInputButtonService
+    public class DesktopInputButtonService : IInputButtonService
     {
         public bool IsSprintPressed()
         {

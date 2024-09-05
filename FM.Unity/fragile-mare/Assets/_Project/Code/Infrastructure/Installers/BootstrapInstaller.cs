@@ -32,7 +32,7 @@ namespace _Project.Code.Infrastructure.Installers
         {
             Container.Bind<ITimeService>().To<UnityTimeService>().AsSingle();
             Container.Bind<IInputAxisService>().To<InputAxisService>().AsSingle();
-            Container.Bind<IInputButtonService>().To<InputButtonService>().AsSingle();
+            Container.Bind<IInputButtonService>().To<AllInputButtonService>().AsSingle();
                 
             Container.Bind<ICameraProvider>().To<CameraProvider>().AsSingle();
         }
