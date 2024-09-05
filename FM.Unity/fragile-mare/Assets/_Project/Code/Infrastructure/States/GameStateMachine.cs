@@ -8,11 +8,11 @@ namespace _Project.Code.Infrastructure.States
         private Dictionary<Type, IState> _states;
         private IState _activeState;
 
-        public GameStateMachine()
+        public GameStateMachine(BootstrapState bootstrapState)
         {
-            _states = new Dictionary<Type, IState>()
+            _states = new Dictionary<Type, IState>
             {
-                [typeof(BootstrapState)] = new BootstrapState()
+                [typeof(BootstrapState)] = bootstrapState
             };
         }
         

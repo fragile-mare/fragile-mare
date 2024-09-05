@@ -1,27 +1,29 @@
-﻿using _Project.Code.Common.Services.Time;
+﻿using System.Collections;
+using _Project.Code.Common.Services.Time;
 using _Project.Code.Gameplay.Cameras.Providers;
 using _Project.Code.Gameplay.Input.Axis.Services;
 using _Project.Code.Gameplay.Input.Button.Services;
+using _Project.Code.Infrastructure.Scenes;
 using _Project.Code.Infrastructure.States;
 using _Project.Code.Infrastructure.Systems;
 using Zenject;
 
 namespace _Project.Code.Infrastructure.Installers
 {
-    public class BootstrapInstaller : MonoInstaller, IInitializable
+    public class BootstrapInstaller : MonoInstaller, IInitializable, ICoroutineRunner
     {
         public override void InstallBindings()
         {
+            Container.BindInterfacesTo<BootstrapInstaller>().FromInstance(this).AsSingle();
             Container.BindInterfacesAndSelfTo<GameStateMachine>().AsSingle();
 
             Container.Bind<GameContext>().FromInstance(Contexts.sharedInstance.game);
-            
             Container.Bind<ISystemsFactory>().To<SystemsFactory>().AsSingle();
+
+            Container.Bind<ISceneLoader>().To<SceneLoader>().AsSingle();
             
             BindServices();
             BindGameStates();
-
-            Container.BindInterfacesTo<BootstrapInstaller>().FromInstance(this).AsSingle();
         }
 
         private void BindGameStates()
@@ -34,7 +36,7 @@ namespace _Project.Code.Infrastructure.Installers
             Container.Bind<ITimeService>().To<UnityTimeService>().AsSingle();
             Container.Bind<IInputAxisService>().To<InputAxisService>().AsSingle();
             Container.Bind<IInputButtonService>().To<AllInputButtonService>().AsSingle();
-                
+            
             Container.Bind<ICameraProvider>().To<CameraProvider>().AsSingle();
         }
 
