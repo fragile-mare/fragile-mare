@@ -8,15 +8,93 @@
 //------------------------------------------------------------------------------
 public static class GameComponentsLookup {
 
+    public const int Id = 0;
+    public const int Transform = 1;
+    public const int WorldPosition = 2;
+    public const int Character = 3;
+    public const int CanDash = 4;
+    public const int DashActivated = 5;
+    public const int DashCurrentCount = 6;
+    public const int DashDuration = 7;
+    public const int Dashing = 8;
+    public const int DashMaxCount = 9;
+    public const int DashRegenAmount = 10;
+    public const int DashRegenAmountToApply = 11;
+    public const int DashRegenDuration = 12;
+    public const int DashRegenTimer = 13;
+    public const int DashSpeed = 14;
+    public const int DashTimer = 15;
+    public const int Direction = 16;
+    public const int CanMove = 17;
+    public const int Moving = 18;
+    public const int Speed = 19;
+    public const int CanSprint = 20;
+    public const int Sprinting = 21;
+    public const int SprintSpeed = 22;
+    public const int DashButtonPressed = 23;
+    public const int Input = 24;
+    public const int InputMovementAxis = 25;
+    public const int SprintButtonPressed = 26;
 
-
-    public const int TotalComponents = 0;
+    public const int TotalComponents = 27;
 
     public static readonly string[] componentNames = {
-
+        "Id",
+        "Transform",
+        "WorldPosition",
+        "Character",
+        "CanDash",
+        "DashActivated",
+        "DashCurrentCount",
+        "DashDuration",
+        "Dashing",
+        "DashMaxCount",
+        "DashRegenAmount",
+        "DashRegenAmountToApply",
+        "DashRegenDuration",
+        "DashRegenTimer",
+        "DashSpeed",
+        "DashTimer",
+        "Direction",
+        "CanMove",
+        "Moving",
+        "Speed",
+        "CanSprint",
+        "Sprinting",
+        "SprintSpeed",
+        "DashButtonPressed",
+        "Input",
+        "InputMovementAxis",
+        "SprintButtonPressed"
     };
 
     public static readonly System.Type[] componentTypes = {
-
+        typeof(_Project.Code.Gameplay.Common.Id),
+        typeof(_Project.Code.Gameplay.Common.TransformComponent),
+        typeof(_Project.Code.Gameplay.Common.WorldPosition),
+        typeof(_Project.Code.Gameplay.Features.Character.Character),
+        typeof(_Project.Code.Gameplay.Features.Movement.Dash.CanDash),
+        typeof(_Project.Code.Gameplay.Features.Movement.Dash.DashActivated),
+        typeof(_Project.Code.Gameplay.Features.Movement.Dash.DashCurrentCount),
+        typeof(_Project.Code.Gameplay.Features.Movement.Dash.DashDuration),
+        typeof(_Project.Code.Gameplay.Features.Movement.Dash.Dashing),
+        typeof(_Project.Code.Gameplay.Features.Movement.Dash.DashMaxCount),
+        typeof(_Project.Code.Gameplay.Features.Movement.Dash.DashRegenAmount),
+        typeof(_Project.Code.Gameplay.Features.Movement.Dash.DashRegenAmountToApply),
+        typeof(_Project.Code.Gameplay.Features.Movement.Dash.DashRegenDuration),
+        typeof(_Project.Code.Gameplay.Features.Movement.Dash.DashRegenTimer),
+        typeof(_Project.Code.Gameplay.Features.Movement.Dash.DashSpeed),
+        typeof(_Project.Code.Gameplay.Features.Movement.Dash.DashTimer),
+        typeof(_Project.Code.Gameplay.Features.Movement.Direction),
+        typeof(_Project.Code.Gameplay.Features.Movement.Move.CanMove),
+        typeof(_Project.Code.Gameplay.Features.Movement.Move.Moving),
+        typeof(_Project.Code.Gameplay.Features.Movement.Move.Speed),
+        typeof(_Project.Code.Gameplay.Features.Movement.Sprint.CanSprint),
+        typeof(_Project.Code.Gameplay.Features.Movement.Sprint.Sprinting),
+        typeof(_Project.Code.Gameplay.Features.Movement.Sprint.SprintSpeed),
+        typeof(_Project.Code.Gameplay.Input.DashButtonPressed),
+        typeof(_Project.Code.Gameplay.Input.Input),
+        typeof(_Project.Code.Gameplay.Input.InputMovementAxis),
+        typeof(_Project.Code.Gameplay.Input.SprintButtonPressed)
     };
 }
