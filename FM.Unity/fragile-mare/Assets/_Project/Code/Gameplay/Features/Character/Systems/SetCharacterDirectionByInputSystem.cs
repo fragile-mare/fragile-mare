@@ -1,4 +1,5 @@
 ﻿using Entitas;
+using UnityEngine;
 
 namespace _Project.Code.Gameplay.Features.Character.Systems
 {
@@ -23,6 +24,10 @@ namespace _Project.Code.Gameplay.Features.Character.Systems
                 if (input.hasInputMovementAxis)
                 {
                     character.ReplaceDirection(input.InputMovementAxis.normalized);
+                }
+                else
+                {
+                    character.ReplaceDirection(Vector2.zero);
                 }
             }
         }
