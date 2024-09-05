@@ -1,8 +1,0 @@
-  
-{
-	"name": "com.mathijsbakker.extenject",
-	"displayName": "TestFramework",
-	"version": "9.2.0",
-	"description": "Test Framework for Zenject",
-	"unity": "2019.3" 
-}
