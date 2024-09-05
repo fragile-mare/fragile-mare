@@ -6,12 +6,18 @@ namespace _Project.Code.Gameplay.Input.Button.Services
     {
         public bool IsSprintPressed()
         {
-            return Gamepad.current.buttonEast.IsPressed();
+            var gamepad = Gamepad.current;
+            if (gamepad == null) return false;
+            
+            return gamepad.buttonEast.IsPressed();
         }
 
         public bool IsDashPressed()
         {
-            return Gamepad.current.buttonEast.wasPressedThisFrame;
+            var gamepad = Gamepad.current;
+            if (gamepad == null) return false;
+            
+            return gamepad.buttonEast.wasPressedThisFrame;
         }
     }
 }
