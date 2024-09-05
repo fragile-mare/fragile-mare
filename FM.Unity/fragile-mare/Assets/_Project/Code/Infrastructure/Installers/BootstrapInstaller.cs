@@ -20,6 +20,8 @@ namespace _Project.Code.Infrastructure.Installers
             Container.Bind<GameContext>().FromInstance(Contexts.sharedInstance.game);
             Container.Bind<ISystemsFactory>().To<SystemsFactory>().AsSingle();
 
+            Container.Bind<IStateFactory>().To<StateFactory>().AsSingle();
+
             Container.Bind<ISceneLoader>().To<SceneLoader>().AsSingle();
             
             BindServices();
@@ -29,6 +31,7 @@ namespace _Project.Code.Infrastructure.Installers
         private void BindGameStates()
         {
             Container.BindInterfacesAndSelfTo<BootstrapState>().AsSingle();
+            Container.BindInterfacesAndSelfTo<LoadLevelState>().AsSingle();
         }
 
         private void BindServices()

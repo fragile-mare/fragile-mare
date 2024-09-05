@@ -5,15 +5,12 @@ namespace _Project.Code.Infrastructure.States
 {
     public class GameStateMachine : IGameStateMachine
     {
-        private Dictionary<Type, IState> _states;
+        private readonly IStateFactory _stateFactory;
         private IState _activeState;
 
-        public GameStateMachine(BootstrapState bootstrapState)
+        public GameStateMachine(IStateFactory stateFactory)
         {
-            _states = new Dictionary<Type, IState>
-            {
-                [typeof(BootstrapState)] = bootstrapState
-            };
+            _stateFactory = stateFactory;
         }
         
         public void Enter<TState>() where TState : class, IState
@@ -26,15 +23,10 @@ namespace _Project.Code.Infrastructure.States
         {
             _activeState?.Exit();
 
-            TState state = GetState<TState>();
+            TState state = _stateFactory.GetState<TState>();
             _activeState = state;
 
             return state;
-        }
-        
-        public TState GetState<TState>() where TState : class, IState
-        {
-            return _states[typeof(TState)] as TState;
         }
     }
 }

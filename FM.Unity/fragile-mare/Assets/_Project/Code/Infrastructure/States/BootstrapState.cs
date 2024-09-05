@@ -5,18 +5,23 @@ namespace _Project.Code.Infrastructure.States
 {
     public class BootstrapState : IState
     {
+        private readonly IGameStateMachine _stateMachine;
         private readonly ISceneLoader _sceneLoader;
-        private const string Initial = "Initial";
-        private const string Desert = "Desert";
 
-        public BootstrapState(ISceneLoader sceneLoader)
+        public BootstrapState(IGameStateMachine stateMachine, ISceneLoader sceneLoader)
         {
+            _stateMachine = stateMachine;
             _sceneLoader = sceneLoader;
         }
 
         public void Enter()
         {
-            _sceneLoader.Load(Desert);
+            _sceneLoader.Load(ScenesNames.Initial, EnterLoadLevel);
+        }
+
+        private void EnterLoadLevel()
+        {
+            _stateMachine.Enter<LoadLevelState>();
         }
 
         public void Exit()
