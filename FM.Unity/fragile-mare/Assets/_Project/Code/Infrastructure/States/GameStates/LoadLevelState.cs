@@ -1,16 +1,18 @@
-﻿using _Project.Code.Infrastructure.Scenes;
+﻿using _Project.Code.Gameplay.Features.Character.Systems;
+using _Project.Code.Infrastructure.Scenes;
 using UnityEngine;
 
 namespace _Project.Code.Infrastructure.States.GameStates
 {
     public class LoadLevelState : IState
     {
-        private const string CharacterPath = "Character/character";
         private readonly ISceneLoader _sceneLoader;
-        
-        public LoadLevelState(ISceneLoader sceneLoader)
+        private readonly ILevelDataProvider _levelDataProvider;
+
+        public LoadLevelState(ISceneLoader sceneLoader, ILevelDataProvider levelDataProvider)
         {
             _sceneLoader = sceneLoader;
+            _levelDataProvider = levelDataProvider;
         }
 
         public void Enter()
@@ -25,10 +27,10 @@ namespace _Project.Code.Infrastructure.States.GameStates
 
         public void OnLevelLoaded()
         {
-            CreateCharacter();
+            AdjustInitialPosition();
         }
 
-        public void CreateCharacter()
+        public void AdjustInitialPosition()
         {
             var initialPosition = Vector3.zero;
             var initialRotation = Quaternion.identity;
@@ -39,9 +41,9 @@ namespace _Project.Code.Infrastructure.States.GameStates
                 initialPosition = startPoint.transform.position;
                 initialRotation = startPoint.transform.rotation;
             }
-            
-            var characterPrefab = Resources.Load<GameObject>(CharacterPath);
-            Object.Instantiate(characterPrefab, initialPosition, initialRotation);
+
+            _levelDataProvider.SetStartPoint(initialPosition);
+            _levelDataProvider.SetStartRotation(initialRotation);
         }
     }
 }

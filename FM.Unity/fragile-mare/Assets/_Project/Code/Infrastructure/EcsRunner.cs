@@ -22,6 +22,7 @@ namespace _Project.Code.Infrastructure
         {
             _gameFeature = new GameFeature(_systems);
             _gameFeature.Initialize();
+            Debug.Log("Vova its a banana");
         }
 
         private void Update()
