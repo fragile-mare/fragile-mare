@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace _Project.Code.Gameplay.Input.Axis.Services
 {
     public class InputAxisService : IInputAxisService
     {
-        public float HorizontalAxis => UnityEngine.Input.GetAxis("Horizontal");
-        public float VerticalAxis => UnityEngine.Input.GetAxis("Vertical");
+        public float HorizontalAxis => UnityEngine.Input.GetAxisRaw("Horizontal");
+        public float VerticalAxis => UnityEngine.Input.GetAxisRaw("Vertical");
 
         public const double Epsilon = 0.0001;
         

@@ -17,7 +17,7 @@ namespace _Project.Code.Gameplay.Features.Movement.Dash.Systems
                 GameMatcher.Dashing,
                 GameMatcher.WorldPosition,
                 GameMatcher.DashSpeed,
-                GameMatcher.Direction
+                GameMatcher.DashDirection
             ));
         }
         
@@ -28,7 +28,7 @@ namespace _Project.Code.Gameplay.Features.Movement.Dash.Systems
                 if (mover.isMoving) mover.isMoving = false;
                 if (mover.isSprinting) mover.isSprinting = false;
 
-                var direction = new Vector3(mover.Direction.x, 0, mover.Direction.y);
+                var direction = new Vector3(mover.DashDirection.x, 0, mover.DashDirection.y);
                 mover.ReplaceWorldPosition(mover.WorldPosition +
                                            direction.normalized * mover.DashSpeed * _time.DeltaTime);
             }
