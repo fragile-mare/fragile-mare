@@ -35,6 +35,11 @@ namespace _Project.Code.Gameplay.Features.Movement.Dash.Systems
                     if(curr <= 0) continue;
                     dasher.ReplaceDashCurrentCount(curr - 1);
                 }
+
+                if (dasher.hasDirection)
+                {
+                    dasher.ReplaceDashDirection(dasher.Direction);
+                }
                 
                 dasher.isDashing = true;
                 dasher.ReplaceDashTimer(dasher.DashDuration);
