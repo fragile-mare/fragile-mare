@@ -12,8 +12,8 @@ namespace _Project.Code.Gameplay.Input.Button.Services
 
         public bool IsDashPressed()
         {
-            return UnityEngine.Input.GetKeyDown(KeyCode.LeftShift)
-                   || UnityEngine.Input.GetKeyDown(KeyCode.RightShift);
+            return UnityEngine.Input.GetKeyDown(KeyCode.E)
+                   || UnityEngine.Input.GetKeyDown(KeyCode.E);
         }
     }
 }
