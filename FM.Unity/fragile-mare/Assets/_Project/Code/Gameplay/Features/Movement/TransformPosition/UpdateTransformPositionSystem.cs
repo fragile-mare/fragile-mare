@@ -1,7 +1,6 @@
-﻿using System;
-using Entitas;
+﻿using Entitas;
 
-namespace _Project.Code.Gameplay.Features.Movement.Systems
+namespace _Project.Code.Gameplay.Features.Movement.TransformPosition
 {
     public class UpdateTransformPositionSystem : IExecuteSystem
     {

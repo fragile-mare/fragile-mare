@@ -1,5 +1,13 @@
-﻿using _Project.Code.Common.Services.Time;
+﻿using _Project.Code.Common.Services.Assets;
+using _Project.Code.Common.Services.Collisions;
+using _Project.Code.Common.Services.Identifiers;
+using _Project.Code.Common.Services.Physics;
+using _Project.Code.Common.Services.StaticData;
+using _Project.Code.Common.Services.Time;
 using _Project.Code.Gameplay.Cameras.Providers;
+using _Project.Code.Gameplay.Features.Character;
+using _Project.Code.Gameplay.Features.Character.Factory;
+using _Project.Code.Gameplay.Features.Character.Systems;
 using _Project.Code.Gameplay.Input.Axis.Services;
 using _Project.Code.Gameplay.Input.Button.Services;
 using _Project.Code.Infrastructure.Scenes;
@@ -7,6 +15,8 @@ using _Project.Code.Infrastructure.States.Factory;
 using _Project.Code.Infrastructure.States.GameStates;
 using _Project.Code.Infrastructure.States.StateMachine;
 using _Project.Code.Infrastructure.Systems;
+using _Project.Code.Infrastructure.View;
+using _Project.Code.Infrastructure.View.Factory;
 using Zenject;
 
 namespace _Project.Code.Infrastructure.Installers
@@ -22,6 +32,7 @@ namespace _Project.Code.Infrastructure.Installers
             BindLoaders();
             BindGameStates();
             BindServices();
+            BindGameplayFactories();
         }
 
         private void BindInstallers()
@@ -45,6 +56,12 @@ namespace _Project.Code.Infrastructure.Installers
             Container.Bind<IStateFactory>().To<StateFactory>().AsSingle();
         }
 
+        private void BindGameplayFactories()
+        {
+            Container.Bind<ICharacterFactory>().To<CharacterFactory>().AsSingle();
+            Container.Bind<IEntityViewFactory>().To<EntityViewFactory>().AsSingle();
+        }
+
         private void BindLoaders()
         {
             Container.Bind<ISceneLoader>().To<SceneLoader>().AsSingle();
@@ -61,6 +78,12 @@ namespace _Project.Code.Infrastructure.Installers
             Container.Bind<ITimeService>().To<UnityTimeService>().AsSingle();
             Container.Bind<IInputAxisService>().To<InputAxisService>().AsSingle();
             Container.Bind<IInputButtonService>().To<AllInputButtonService>().AsSingle();
+            Container.Bind<IIdentifierService>().To<SequenceIdentifierService>().AsSingle();
+            Container.Bind<IStaticDataService>().To<StaticDataService>().AsSingle();
+            Container.Bind<IPhysicsService>().To<PhysicsService>().AsSingle();
+            Container.Bind<ICollisionRegistry>().To<CollisionRegistry>().AsSingle();
+            Container.Bind<IAssetProvider>().To<AssetProvider>().AsSingle();
+            Container.Bind<ILevelDataProvider>().To<LevelDataProvider>().AsSingle();
             
             Container.Bind<ICameraProvider>().To<CameraProvider>().AsSingle();
         }
@@ -68,6 +91,8 @@ namespace _Project.Code.Infrastructure.Installers
         public void Initialize()
         {
             Container.Resolve<IGameStateMachine>().Enter<BootstrapState>();
+            
+            Container.Resolve<IStaticDataService>().LoadAll();
         }
     }
 }

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27a7c6846de44b0e8ce4823ccac7e745, type: 3}
+  m_Name: CharacterConfig
+  m_EditorClassIdentifier: 
+  speed: 4
+  sprintSpeed: 10
+  dashSpeed: 28
+  dashDuration: 0.2
+  dashMaxCount: 5
+  dashRegenDuration: 3
+  dashRegenAmount: 1
+  prefab: {fileID: -4483075354276722165, guid: 9060e7d3ad69e354286b2426ef3e2d4e, type: 3}

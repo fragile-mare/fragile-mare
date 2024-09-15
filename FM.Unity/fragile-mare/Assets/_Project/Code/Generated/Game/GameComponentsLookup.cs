@@ -8,40 +8,52 @@
 //------------------------------------------------------------------------------
 public static class GameComponentsLookup {
 
-    public const int Id = 0;
-    public const int Transform = 1;
-    public const int WorldPosition = 2;
-    public const int Character = 3;
-    public const int CanDash = 4;
-    public const int DashActivated = 5;
-    public const int DashCurrentCount = 6;
-    public const int DashDuration = 7;
-    public const int Dashing = 8;
-    public const int DashMaxCount = 9;
-    public const int DashRegenAmount = 10;
-    public const int DashRegenAmountToApply = 11;
-    public const int DashRegenDuration = 12;
-    public const int DashRegenTimer = 13;
-    public const int DashSpeed = 14;
-    public const int DashTimer = 15;
-    public const int Direction = 16;
-    public const int CanMove = 17;
-    public const int Moving = 18;
-    public const int Speed = 19;
-    public const int CanSprint = 20;
-    public const int Sprinting = 21;
-    public const int SprintSpeed = 22;
-    public const int DashButtonPressed = 23;
-    public const int Input = 24;
-    public const int InputMovementAxis = 25;
-    public const int SprintButtonPressed = 26;
+    public const int Destructed = 0;
+    public const int Id = 1;
+    public const int SelfDestructTimer = 2;
+    public const int Transform = 3;
+    public const int View = 4;
+    public const int ViewPath = 5;
+    public const int ViewPrefab = 6;
+    public const int WorldPosition = 7;
+    public const int WorldRotation = 8;
+    public const int Character = 9;
+    public const int CanDash = 10;
+    public const int DashActivated = 11;
+    public const int DashCurrentCount = 12;
+    public const int DashDuration = 13;
+    public const int Dashing = 14;
+    public const int DashMaxCount = 15;
+    public const int DashRegenAmount = 16;
+    public const int DashRegenAmountToApply = 17;
+    public const int DashRegenDuration = 18;
+    public const int DashRegenTimer = 19;
+    public const int DashSpeed = 20;
+    public const int DashTimer = 21;
+    public const int Direction = 22;
+    public const int CanMove = 23;
+    public const int Moving = 24;
+    public const int Speed = 25;
+    public const int CanSprint = 26;
+    public const int Sprinting = 27;
+    public const int SprintSpeed = 28;
+    public const int DashButtonPressed = 29;
+    public const int Input = 30;
+    public const int InputMovementAxis = 31;
+    public const int SprintButtonPressed = 32;
 
-    public const int TotalComponents = 27;
+    public const int TotalComponents = 33;
 
     public static readonly string[] componentNames = {
+        "Destructed",
         "Id",
+        "SelfDestructTimer",
         "Transform",
+        "View",
+        "ViewPath",
+        "ViewPrefab",
         "WorldPosition",
+        "WorldRotation",
         "Character",
         "CanDash",
         "DashActivated",
@@ -69,9 +81,15 @@ public static class GameComponentsLookup {
     };
 
     public static readonly System.Type[] componentTypes = {
+        typeof(_Project.Code.Gameplay.Common.Destructed),
         typeof(_Project.Code.Gameplay.Common.Id),
+        typeof(_Project.Code.Gameplay.Common.SelfDestructTimer),
         typeof(_Project.Code.Gameplay.Common.TransformComponent),
+        typeof(_Project.Code.Gameplay.Common.View),
+        typeof(_Project.Code.Gameplay.Common.ViewPath),
+        typeof(_Project.Code.Gameplay.Common.ViewPrefab),
         typeof(_Project.Code.Gameplay.Common.WorldPosition),
+        typeof(_Project.Code.Gameplay.Common.WorldRotation),
         typeof(_Project.Code.Gameplay.Features.Character.Character),
         typeof(_Project.Code.Gameplay.Features.Movement.Dash.CanDash),
         typeof(_Project.Code.Gameplay.Features.Movement.Dash.DashActivated),
