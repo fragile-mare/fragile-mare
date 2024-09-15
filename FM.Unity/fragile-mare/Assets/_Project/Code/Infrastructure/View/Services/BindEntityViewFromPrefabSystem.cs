@@ -6,14 +6,14 @@ namespace _Project.Code.Infrastructure.View.Services
 {
     public class BindEntityViewFromPrefabSystem : IExecuteSystem
     {
-        private readonly IEntityViewFactory _viewFactory;
-        private readonly IGroup<GameEntity> _entities;
         private readonly List<GameEntity> _buffer = new(32);
+        private readonly IGroup<GameEntity> _entities;
+        private readonly IEntityViewFactory _viewFactory;
 
         public BindEntityViewFromPrefabSystem(GameContext game, IEntityViewFactory viewFactory)
         {
             _viewFactory = viewFactory;
-            _entities = game.GetGroup(GameMatcher.AllOf(GameMatcher.ViewPath).NoneOf(GameMatcher.View));
+            _entities = game.GetGroup(GameMatcher.AllOf(GameMatcher.ViewPrefab).NoneOf(GameMatcher.View));
         }
 
         public void Execute()
