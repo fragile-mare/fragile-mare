@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Entitas;
+using UnityEngine;
 
 namespace _Project.Code.Gameplay.Features.Movement.Dash.Systems
 {
@@ -23,6 +24,11 @@ namespace _Project.Code.Gameplay.Features.Movement.Dash.Systems
         {
             foreach (GameEntity dasher in _dashers.GetEntities(_buffer))
             {
+                if (dasher.hasDirection && dasher.Direction == Vector2.zero)
+                {
+                    continue;
+                }
+                
                 if (dasher.hasDashCurrentCount)
                 {
                     var curr = dasher.DashCurrentCount;
