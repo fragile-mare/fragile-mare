@@ -14,7 +14,7 @@ namespace _Project.Code.Gameplay.Features.Character.Systems
             _characterFactory = characterFactory;
             _levelData = levelData;
         }
-        
+
         public void Initialize()
         {
             _character = _characterFactory.CreateCharacter(_levelData.StartPoint, _levelData.StartRotation);
