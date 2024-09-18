@@ -13,6 +13,9 @@ namespace _Project.Code.Gameplay.Features.Character.Configs
         public int dashMaxCount;
         public float dashRegenDuration;
         public int dashRegenAmount;
+        public float maxEnergy;
+        public float currentEnergy;
+        public float energyToRegen;
         public EntityBehaviour prefab;
     }
 }

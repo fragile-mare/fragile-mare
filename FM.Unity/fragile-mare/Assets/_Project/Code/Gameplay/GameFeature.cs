@@ -1,6 +1,7 @@
 ﻿using _Project.Code.Common.Destruct;
 using _Project.Code.Gameplay.Cameras;
 using _Project.Code.Gameplay.Features.Character;
+using _Project.Code.Gameplay.Features.Energy;
 using _Project.Code.Gameplay.Features.Movement;
 using _Project.Code.Gameplay.Input;
 using _Project.Code.Infrastructure.Systems;
@@ -18,6 +19,7 @@ namespace _Project.Code.Gameplay
             Add(systems.Create<CameraFeature>());
 
             Add(systems.Create<EntityViewFeature>());
+            Add(systems.Create<EnergyFeature>());
             Add(systems.Create<ProcessDestructedFeature>());
         }
     }
