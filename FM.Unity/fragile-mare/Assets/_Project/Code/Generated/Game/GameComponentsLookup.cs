@@ -18,32 +18,38 @@ public static class GameComponentsLookup {
     public const int WorldPosition = 7;
     public const int WorldRotation = 8;
     public const int Character = 9;
-    public const int CanDash = 10;
-    public const int DashActivated = 11;
-    public const int DashCurrentCount = 12;
-    public const int DashDirection = 13;
-    public const int DashDuration = 14;
-    public const int Dashing = 15;
-    public const int DashMaxCount = 16;
-    public const int DashRegenAmount = 17;
-    public const int DashRegenAmountToApply = 18;
-    public const int DashRegenDuration = 19;
-    public const int DashRegenTimer = 20;
-    public const int DashSpeed = 21;
-    public const int DashTimer = 22;
-    public const int Direction = 23;
-    public const int CanMove = 24;
-    public const int Moving = 25;
-    public const int Speed = 26;
-    public const int CanSprint = 27;
-    public const int Sprinting = 28;
-    public const int SprintSpeed = 29;
-    public const int DashButtonPressed = 30;
-    public const int Input = 31;
-    public const int InputMovementAxis = 32;
-    public const int SprintButtonPressed = 33;
+    public const int CurrentEnergy = 10;
+    public const int EnergyRegenTimer = 11;
+    public const int EnergyToApply = 12;
+    public const int EnergyToRegen = 13;
+    public const int EnergyType = 14;
+    public const int MaxEnergy = 15;
+    public const int CanDash = 16;
+    public const int DashActivated = 17;
+    public const int DashCurrentCount = 18;
+    public const int DashDirection = 19;
+    public const int DashDuration = 20;
+    public const int Dashing = 21;
+    public const int DashMaxCount = 22;
+    public const int DashRegenAmount = 23;
+    public const int DashRegenAmountToApply = 24;
+    public const int DashRegenDuration = 25;
+    public const int DashRegenTimer = 26;
+    public const int DashSpeed = 27;
+    public const int DashTimer = 28;
+    public const int Direction = 29;
+    public const int CanMove = 30;
+    public const int Moving = 31;
+    public const int Speed = 32;
+    public const int CanSprint = 33;
+    public const int Sprinting = 34;
+    public const int SprintSpeed = 35;
+    public const int DashButtonPressed = 36;
+    public const int Input = 37;
+    public const int InputMovementAxis = 38;
+    public const int SprintButtonPressed = 39;
 
-    public const int TotalComponents = 34;
+    public const int TotalComponents = 40;
 
     public static readonly string[] componentNames = {
         "Destructed",
@@ -56,6 +62,12 @@ public static class GameComponentsLookup {
         "WorldPosition",
         "WorldRotation",
         "Character",
+        "CurrentEnergy",
+        "EnergyRegenTimer",
+        "EnergyToApply",
+        "EnergyToRegen",
+        "EnergyType",
+        "MaxEnergy",
         "CanDash",
         "DashActivated",
         "DashCurrentCount",
@@ -93,6 +105,12 @@ public static class GameComponentsLookup {
         typeof(_Project.Code.Gameplay.Common.WorldPosition),
         typeof(_Project.Code.Gameplay.Common.WorldRotation),
         typeof(_Project.Code.Gameplay.Features.Character.Character),
+        typeof(_Project.Code.Gameplay.Features.Energy.CurrentEnergy),
+        typeof(_Project.Code.Gameplay.Features.Energy.EnergyRegenTimer),
+        typeof(_Project.Code.Gameplay.Features.Energy.EnergyToApply),
+        typeof(_Project.Code.Gameplay.Features.Energy.EnergyToRegen),
+        typeof(_Project.Code.Gameplay.Features.Energy.EnergyType),
+        typeof(_Project.Code.Gameplay.Features.Energy.MaxEnergy),
         typeof(_Project.Code.Gameplay.Features.Movement.Dash.CanDash),
         typeof(_Project.Code.Gameplay.Features.Movement.Dash.DashActivated),
         typeof(_Project.Code.Gameplay.Features.Movement.Dash.DashCurrentCount),
