@@ -8,4 +8,5 @@ namespace _Project.Code.Gameplay.Input
     
     [Game] public class SprintButtonPressed : IComponent { }
     [Game] public class DashButtonPressed : IComponent { }
+    [Game] public class InputCursorAxis : IComponent { }
 }
