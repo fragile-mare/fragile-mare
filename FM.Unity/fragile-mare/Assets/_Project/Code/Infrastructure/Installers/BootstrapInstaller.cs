@@ -10,6 +10,8 @@ using _Project.Code.Gameplay.Features.Character.Factory;
 using _Project.Code.Gameplay.Features.Character.Systems;
 using _Project.Code.Gameplay.Input.Axis.Services;
 using _Project.Code.Gameplay.Input.Button.Services;
+using _Project.Code.Gameplay.Input.Cursor.Services;
+using _Project.Code.Gameplay.Input.Scroll.Services;
 using _Project.Code.Infrastructure.Scenes;
 using _Project.Code.Infrastructure.States.Factory;
 using _Project.Code.Infrastructure.States.GameStates;
@@ -84,8 +86,9 @@ namespace _Project.Code.Infrastructure.Installers
             Container.Bind<ICollisionRegistry>().To<CollisionRegistry>().AsSingle();
             Container.Bind<IAssetProvider>().To<AssetProvider>().AsSingle();
             Container.Bind<ILevelDataProvider>().To<LevelDataProvider>().AsSingle();
-            
             Container.Bind<ICameraProvider>().To<CameraProvider>().AsSingle();
+            Container.Bind<ICursorPositionService>().To<CursorPositionService>().AsSingle();
+            Container.Bind<IScrollPositionService>().To<ScrollPositionService>().AsSingle();
         }
 
         public void Initialize()
