@@ -9,6 +9,7 @@ using _Project.Code.Gameplay.Features.Character;
 using _Project.Code.Gameplay.Features.Character.Factory;
 using _Project.Code.Gameplay.Features.Character.Systems;
 using _Project.Code.Gameplay.Input.Axis.Services;
+using _Project.Code.Gameplay.Input.Axis.Services.Mouse;
 using _Project.Code.Gameplay.Input.Button.Services;
 using _Project.Code.Infrastructure.Scenes;
 using _Project.Code.Infrastructure.States.Factory;
@@ -86,6 +87,8 @@ namespace _Project.Code.Infrastructure.Installers
             Container.Bind<ILevelDataProvider>().To<LevelDataProvider>().AsSingle();
             
             Container.Bind<ICameraProvider>().To<CameraProvider>().AsSingle();
+
+            Container.Bind<ICursorPositionService>().To<CursorPositionService>().AsSingle();
         }
 
         public void Initialize()

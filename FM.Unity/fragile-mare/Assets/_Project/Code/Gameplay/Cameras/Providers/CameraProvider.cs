@@ -29,9 +29,10 @@ namespace _Project.Code.Gameplay.Cameras.Providers
             return MainCamera.transform.SetWorldXZ(x + _offset.x, z + _offset.z);
         }
 
-        public void SetWorldPosition(Vector3 position)
+        public void SetRotation(float xRotation, float yRotation, float zRotation)
         {
-            MainCamera.transform.position = position;
+            MainCamera.transform.localRotation = 
+                Quaternion.Euler(xRotation, yRotation, zRotation);
         }
     }
 }

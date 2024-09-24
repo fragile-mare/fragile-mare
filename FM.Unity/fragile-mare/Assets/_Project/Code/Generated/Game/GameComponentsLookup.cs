@@ -44,12 +44,18 @@ public static class GameComponentsLookup {
     public const int CanSprint = 33;
     public const int Sprinting = 34;
     public const int SprintSpeed = 35;
-    public const int DashButtonPressed = 36;
-    public const int Input = 37;
-    public const int InputMovementAxis = 38;
-    public const int SprintButtonPressed = 39;
+    public const int CursorX = 36;
+    public const int CursorY = 37;
+    public const int DashButtonPressed = 38;
+    public const int Input = 39;
+    public const int InputCursorAxis = 40;
+    public const int InputMovementAxis = 41;
+    public const int MouseSens = 42;
+    public const int SprintButtonPressed = 43;
+    public const int XRotationCursor = 44;
+    public const int YRotationCursor = 45;
 
-    public const int TotalComponents = 40;
+    public const int TotalComponents = 46;
 
     public static readonly string[] componentNames = {
         "Destructed",
@@ -88,10 +94,16 @@ public static class GameComponentsLookup {
         "CanSprint",
         "Sprinting",
         "SprintSpeed",
+        "CursorX",
+        "CursorY",
         "DashButtonPressed",
         "Input",
+        "InputCursorAxis",
         "InputMovementAxis",
-        "SprintButtonPressed"
+        "MouseSens",
+        "SprintButtonPressed",
+        "XRotationCursor",
+        "YRotationCursor"
     };
 
     public static readonly System.Type[] componentTypes = {
@@ -131,9 +143,15 @@ public static class GameComponentsLookup {
         typeof(_Project.Code.Gameplay.Features.Movement.Sprint.CanSprint),
         typeof(_Project.Code.Gameplay.Features.Movement.Sprint.Sprinting),
         typeof(_Project.Code.Gameplay.Features.Movement.Sprint.SprintSpeed),
+        typeof(_Project.Code.Gameplay.Input.CursorX),
+        typeof(_Project.Code.Gameplay.Input.CursorY),
         typeof(_Project.Code.Gameplay.Input.DashButtonPressed),
         typeof(_Project.Code.Gameplay.Input.Input),
+        typeof(_Project.Code.Gameplay.Input.InputCursorAxis),
         typeof(_Project.Code.Gameplay.Input.InputMovementAxis),
-        typeof(_Project.Code.Gameplay.Input.SprintButtonPressed)
+        typeof(_Project.Code.Gameplay.Input.MouseSens),
+        typeof(_Project.Code.Gameplay.Input.SprintButtonPressed),
+        typeof(_Project.Code.Gameplay.Input.XRotationCursor),
+        typeof(_Project.Code.Gameplay.Input.YRotationCursor)
     };
 }
