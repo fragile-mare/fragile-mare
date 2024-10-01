@@ -9,16 +9,17 @@ namespace _Project.Code.Gameplay.Input.Axis
     {
         public InputAxisFeature(ISystemsFactory systems)
         {
-            // Add(systems.Create<InitializeCameraOffsetSystem>());
+            Add(systems.Create<InitializeCameraOffsetSystem>());
+            Add(systems.Create<InitializeCameraPositionSystem>());
             
             Add(systems.Create<EmitInputSystem>());
 
-            // Add(systems.Create<InputScrollPositionSystem>());
-            // Add(systems.Create<InputZoomPositionSystem>());
-            // Add(systems.Create<InputMouseCursorPositionSystem>());
-            // Add(systems.Create<InputXRotationSystem>());
-            // Add(systems.Create<InputYRotationSystem>());
-            // Add(systems.Create<InputCameraRotateSystem>());
+            Add(systems.Create<InputScrollPositionSystem>());
+            Add(systems.Create<InputZoomPositionSystem>());
+            Add(systems.Create<InputMouseCursorPositionSystem>());
+            Add(systems.Create<InputXRotationSystem>());
+            Add(systems.Create<InputYRotationSystem>());
+            Add(systems.Create<InputCameraRotateSystem>());
         }
     }
 }

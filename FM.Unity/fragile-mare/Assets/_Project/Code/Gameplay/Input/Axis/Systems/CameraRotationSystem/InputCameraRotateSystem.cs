@@ -31,6 +31,7 @@ namespace _Project.Code.Gameplay.Input.Axis.Systems.CameraRotationSystem
             foreach (GameEntity character in _character)
             {
                 _camera.SetCameraRotation(-input.YRotationCursor, input.XRotationCursor, 0);
+                
                 var position = character.WorldPosition + input.Offset;
                 _camera.SetPosition(position);
             }

@@ -1,54 +1,31 @@
-﻿using System.Collections.Generic;
-using _Project.Code.Common.Extensions;
-using _Project.Code.Gameplay.Cameras.Providers;
-using Entitas;
+﻿using Entitas;
 using UnityEngine;
 
 namespace _Project.Code.Gameplay.Input.Axis.Systems.CameraRotationSystem
 {
-    public class InitializeCameraOffsetSystem : IExecuteSystem
+    public class InitializeCameraOffsetSystem : IInitializeSystem
     {
-        private readonly List<GameEntity> _buffer = new(64);
-
-        private readonly IGroup<GameEntity> _characters;
         private readonly IGroup<GameEntity> _inputs;
-        private readonly ICameraProvider _camera;
 
-        public InitializeCameraOffsetSystem(GameContext game, ICameraProvider camera)
+        public InitializeCameraOffsetSystem(GameContext game)
         {
-            _camera = camera;
-
-            _characters = game.GetGroup(GameMatcher.AllOf(
-                GameMatcher.Character,
-                GameMatcher.WorldPosition
-            ));
-
             _inputs = game.GetGroup(GameMatcher.AllOf(
                 GameMatcher.Input,
                 GameMatcher.LimitRotationY,
                 GameMatcher.Offset,
-                GameMatcher.ZoomMax
-            ).NoneOf(GameMatcher.CameraOffsetInitialized));
+                GameMatcher.ZoomMax));
         }
 
-        public void Execute()
+        public void Initialize()
         {
-            foreach (var input in _inputs.GetEntities(_buffer))
+            foreach (var input in _inputs)
             {
-                foreach (var character in _characters)
-                {
-                    input.ReplaceLimitRotationY(Mathf.Abs(input.LimitRotationY));
+                input.ReplaceLimitRotationY(Mathf.Abs(input.LimitRotationY));
 
-                    if (input.LimitRotationY > 90) input.ReplaceLimitRotationY(90);
+                if (input.LimitRotationY > 90) input.ReplaceLimitRotationY(90);
 
-                    input.ReplaceOffset(new Vector3(input.Offset.x, input.Offset.y,
-                        -Mathf.Abs(input.ZoomMax) / 2));
-
-                    var position = character.WorldPosition + input.Offset;
-                    _camera.SetPosition(position);
-
-                    input.With(x => x.isCameraOffsetInitialized = true);
-                }
+                input.ReplaceOffset(new Vector3(input.Offset.x, input.Offset.y,
+                    -Mathf.Abs(input.ZoomMax) / 2));
             }
         }
     }
