@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
-using Entitas;
 
 namespace _Project.Code.Gameplay.Input.Axis.Services.Mouse
 {
-    public class CursorPositionService : ICursorPositionService, ISystem
+    public class CursorPositionService : ICursorPositionService
     {
         public Vector2 GetCursorPosition()
         {

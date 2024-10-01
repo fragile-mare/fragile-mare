@@ -85,10 +85,9 @@ namespace _Project.Code.Infrastructure.Installers
             Container.Bind<ICollisionRegistry>().To<CollisionRegistry>().AsSingle();
             Container.Bind<IAssetProvider>().To<AssetProvider>().AsSingle();
             Container.Bind<ILevelDataProvider>().To<LevelDataProvider>().AsSingle();
-            
             Container.Bind<ICameraProvider>().To<CameraProvider>().AsSingle();
-
             Container.Bind<ICursorPositionService>().To<CursorPositionService>().AsSingle();
+            Container.Bind<IScrollPositionService>().To<ScrollPositionService>().AsSingle();
         }
 
         public void Initialize()

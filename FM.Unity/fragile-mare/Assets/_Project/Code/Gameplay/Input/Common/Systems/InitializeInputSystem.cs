@@ -2,6 +2,7 @@
 using _Project.Code.Common.Extensions;
 using _Project.Code.Common.Services.StaticData;
 using Entitas;
+using UnityEngine;
 
 namespace _Project.Code.Gameplay.Input.Common.Systems
 {
@@ -23,7 +24,13 @@ namespace _Project.Code.Gameplay.Input.Common.Systems
                 .AddYRotationCursor(0)
                 .AddCursorX(0)
                 .AddCursorY(0)
-                .AddMouseSens(100);
+                .AddMouseSens(1)
+                .AddZoom(0.25f)
+                .AddZoomMin(3)
+                .AddZoomMax(10)
+                .AddOffset(Vector3.zero)
+                .AddMouseScrollWheel(0)
+                .AddLimitRotationY(80);
         }
 
         public void TearDown()

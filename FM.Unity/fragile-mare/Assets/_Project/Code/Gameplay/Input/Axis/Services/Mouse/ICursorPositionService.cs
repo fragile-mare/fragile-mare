@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace _Project.Code.Gameplay.Input.Axis.Services
+namespace _Project.Code.Gameplay.Input.Axis.Services.Mouse
 {
     public interface ICursorPositionService
     {

@@ -15,4 +15,11 @@ namespace _Project.Code.Gameplay.Input
     [Game] public class YRotationCursor : IComponent { public float Value; }
     [Game] public class CursorX : IComponent { public float Value; }
     [Game] public class CursorY : IComponent { public float Value; }
+    [Game] public class Zoom : IComponent { public float Value; }
+    [Game] public class ZoomMin : IComponent { public float Value; }
+    [Game] public class ZoomMax : IComponent { public float Value; }
+    [Game] public class LimitRotationY : IComponent { public float Value; }
+    [Game] public class Offset : IComponent { public Vector3 Value; }
+    [Game] public class MouseScrollWheel : IComponent { public float Value; }
+    [Game] public class CameraOffsetInitialized : IComponent { }
 }
