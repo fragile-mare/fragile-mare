@@ -12,6 +12,9 @@ namespace _Project.Code.Gameplay.Features.Camera.Rotation
             
             Add(systems.Create<InputXRotationSystem>());
             Add(systems.Create<InputYRotationSystem>());
+
+            Add(systems.Create<InputCameraRotationXSystem>());
+            Add(systems.Create<InputCameraRotationYSystem>());
             
             Add(systems.Create<InputCameraRotateSystem>());
         }

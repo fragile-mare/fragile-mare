@@ -50,6 +50,25 @@ namespace _Project.Code.Gameplay.Cameras.Providers
             return MainCamera.transform.localEulerAngles.y;
         }
 
+        public void SetCameraRotationX(float x)
+        {
+            var transform = MainCamera.transform;
+            var localRotation = transform.localEulerAngles;
+            var y = localRotation.y;
+            var z = localRotation.z;
+            transform.localEulerAngles = new Vector3(x, y, z);
+        }
+        
+        public void SetCameraRotationY(float y)
+        {
+            var transform = MainCamera.transform;
+            var localRotation = transform.localEulerAngles;
+            var x = localRotation.x;
+            var z = localRotation.z;
+            transform.localEulerAngles = new Vector3(x, y, z);
+        }
+            
+
         public Quaternion GetLocalRotation()
         {
             return MainCamera.transform.localRotation;
