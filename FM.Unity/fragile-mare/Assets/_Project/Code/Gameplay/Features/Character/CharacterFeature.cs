@@ -8,8 +8,11 @@ namespace _Project.Code.Gameplay.Features.Character
         public CharacterFeature(ISystemsFactory systems)
         {
             Add(systems.Create<InitializeCharacterSystem>());
-            
+
+            Add(systems.Create<UpdateCharacterSpeedIfIsSprintingChangesReactiveSystem>());
+
             Add(systems.Create<SetCharacterDirectionByInputSystem>());
+            Add(systems.Create<SetCharacterInputAccelerationStatusTargetVelocity>());
             Add(systems.Create<SetCharacterSprintByInputSystem>());
             Add(systems.Create<SetCharacterDashByInputSystem>());
             

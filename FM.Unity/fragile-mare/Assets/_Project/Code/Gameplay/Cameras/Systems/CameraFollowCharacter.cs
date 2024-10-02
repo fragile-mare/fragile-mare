@@ -1,5 +1,4 @@
-﻿using _Project.Code.Common.Extensions;
-using _Project.Code.Gameplay.Cameras.Providers;
+﻿using _Project.Code.Gameplay.Cameras.Providers;
 using Entitas;
 
 namespace _Project.Code.Gameplay.Cameras.Systems

@@ -1,4 +1,4 @@
-﻿using _Project.Code.Gameplay.Features.Character.Systems;
+using _Project.Code.Gameplay.Features.Character.Systems;
 using _Project.Code.Gameplay.Features.Movement.Dash;
 using _Project.Code.Gameplay.Features.Movement.Move;
 using _Project.Code.Gameplay.Features.Movement.Sprint;

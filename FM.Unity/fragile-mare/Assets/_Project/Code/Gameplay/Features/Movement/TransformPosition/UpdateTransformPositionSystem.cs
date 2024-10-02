@@ -9,9 +9,11 @@ namespace _Project.Code.Gameplay.Features.Movement.TransformPosition
         public UpdateTransformPositionSystem(GameContext game)
         {
             _entities = game.GetGroup(GameMatcher.AllOf(
-                GameMatcher.WorldPosition,
-                GameMatcher.Transform));
+                    GameMatcher.WorldPosition,
+                    GameMatcher.Transform)
+                .NoneOf(GameMatcher.Rigidbody));
         }
+
         public void Execute()
         {
             foreach (var entity in _entities)
