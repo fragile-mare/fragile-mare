@@ -2,47 +2,60 @@
 using _Project.Code.Common.Extensions;
 using _Project.Code.Common.Services.Identifiers;
 using _Project.Code.Common.Services.StaticData;
+using _Project.Code.Gameplay.Features.Ability.Configs;
+using _Project.Code.Gameplay.Features.Ability.Factories;
+using _Project.Code.Gameplay.Features.Status.Configs;
+using _Project.Code.Gameplay.Features.Status.Factories;
 using UnityEngine;
 
 namespace _Project.Code.Gameplay.Features.Character.Factory
 {
     public class CharacterFactory : ICharacterFactory
     {
+        private readonly IAbilityFactory _abilityFactory;
         private readonly IIdentifierService _identifiers;
         private readonly IStaticDataService _staticData;
+        private readonly IStatusFactory _statusFactory;
 
-        public CharacterFactory(IIdentifierService identifiers, IStaticDataService staticData)
+        public CharacterFactory(IIdentifierService identifiers, IStatusFactory statusFactory,
+            IAbilityFactory abilityFactory, IStaticDataService staticData)
         {
             _identifiers = identifiers;
+            _statusFactory = statusFactory;
+            _abilityFactory = abilityFactory;
             _staticData = staticData;
         }
-        
+
         public GameEntity CreateCharacter(Vector3 at, Quaternion rotation)
         {
-            return CreateEntity.Empty()
+            GameEntity character = CreateEntity.Empty()
                 .AddId(_identifiers.Next())
                 .AddWorldPosition(at)
                 .AddDirection(Vector2.zero)
                 .AddViewPrefab(_staticData.CharacterConfig.prefab)
                 .AddSpeed(_staticData.CharacterConfig.speed)
-                .AddSprintSpeed(_staticData.CharacterConfig.sprintSpeed)
-                .AddDashSpeed(_staticData.CharacterConfig.dashSpeed)
-                .AddDashDuration(_staticData.CharacterConfig.dashDuration)
-                .AddDashTimer(0)
-                .AddDashMaxCount(_staticData.CharacterConfig.dashMaxCount)
-                .AddDashCurrentCount(_staticData.CharacterConfig.dashMaxCount)
-                .AddDashRegenDuration(_staticData.CharacterConfig.dashRegenDuration)
-                .AddDashRegenTimer(_staticData.CharacterConfig.dashRegenDuration)
-                .AddDashRegenAmount(_staticData.CharacterConfig.dashRegenAmount)
                 .AddCurrentEnergy(_staticData.CharacterConfig.currentEnergy)
                 .AddMaxEnergy(_staticData.CharacterConfig.maxEnergy)
                 .AddEnergyToApply(0)
                 .AddEnergyToRegen(_staticData.CharacterConfig.energyToRegen)
-                .With(x =>x.isEnergyType = false)
+                .With(x => x.isEnergyType = false)
                 .With(x => x.isCharacter = true)
                 .With(x => x.isCanMove = true)
-                .With(x => x.isCanSprint = true)
-                .With(x => x.isCanDash = true);
+                .With(x => x.isForceMovePosition = true);
+
+
+            foreach (StatusSetup status in _staticData.CharacterConfig.statuses)
+            {
+                _statusFactory.CreateStatus(status, character.Id, character.Id);
+            }
+
+            foreach (AbilityConfig ability in _staticData.CharacterConfig.abilities)
+            {
+                _abilityFactory.CreateAbility(ability, character.Id);
+            }
+
+
+            return character;
         }
     }
 }

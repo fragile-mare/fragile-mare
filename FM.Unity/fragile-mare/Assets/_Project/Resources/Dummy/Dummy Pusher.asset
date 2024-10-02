@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 800eb45d9608459aba9ed90fb3f1cdaa, type: 3}
+  m_Name: Dummy Pusher
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 1872713288925257450, guid: cce0ed0df1806ec4b8ad58ca92ce5204, type: 3}
+  at: {x: 15, y: 0, z: 15}
+  abilities:
+  - type: 2
+    cooldown: 5
+    statuses:
+    - type: 3
+      infinity: 0
+      duration: 5
+      value: 200
+      radius: 5
+      targetVelocity: {x: 0, y: 0, z: 0}
+      deltaAxis: {x: 0, y: 0, z: 0}
+    effects: []
