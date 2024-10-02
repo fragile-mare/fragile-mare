@@ -13,10 +13,31 @@ MonoBehaviour:
   m_Name: CharacterConfig
   m_EditorClassIdentifier: 
   speed: 4
+  speedForce: 1
   sprintSpeed: 10
   dashSpeed: 28
   dashDuration: 0.2
   dashMaxCount: 5
   dashRegenDuration: 3
   dashRegenAmount: 1
+  maxEnergy: 0
+  currentEnergy: 0
+  energyToRegen: 0
   prefab: {fileID: -4483075354276722165, guid: 9060e7d3ad69e354286b2426ef3e2d4e, type: 3}
+  dashForce: 10
+  abilities:
+  - type: 1
+    cooldown: 2
+    statuses: []
+    effects:
+    - type: 2
+      value: 500
+      direction: {x: 0, y: 0, z: 0}
+  statuses:
+  - type: 2
+    infinity: 1
+    duration: 0
+    value: 20
+    radius: 0
+    targetVelocity: {x: 0, y: 0, z: 0}
+    deltaAxis: {x: 1, y: 0, z: 1}

@@ -1,5 +1,4 @@
-﻿using _Project.Code.Common.Extensions;
-using _Project.Code.Gameplay.Cameras.Providers;
+﻿using _Project.Code.Gameplay.Cameras.Providers;
 using Entitas;
 
 namespace _Project.Code.Gameplay.Cameras.Systems
@@ -16,14 +15,14 @@ namespace _Project.Code.Gameplay.Cameras.Systems
             _characters = game.GetGroup(GameMatcher
                 .AllOf(
                     GameMatcher.Character,
-                    GameMatcher.WorldPosition));
+                    GameMatcher.Rigidbody));
         }
 
         public void Execute()
         {
             foreach (var character in _characters)
             {
-                _cameraProvider.SetWorldXZ(character.WorldPosition.x, character.WorldPosition.z);
+                _cameraProvider.SetWorldXZ(character.Rigidbody.position.x, character.Rigidbody.position.z);
             }
         }
     }
