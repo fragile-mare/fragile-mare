@@ -13,5 +13,7 @@ namespace _Project.Code.Gameplay.Cameras.Providers
         void SetPosition(Vector3 position);
         float GetCameraLocalY();
         Quaternion GetLocalRotation();
+        void SetCameraRotationX(float x);
+        void SetCameraRotationY(float y);
     }
 }
