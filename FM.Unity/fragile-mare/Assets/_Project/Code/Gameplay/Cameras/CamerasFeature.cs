@@ -3,9 +3,9 @@ using _Project.Code.Infrastructure.Systems;
 
 namespace _Project.Code.Gameplay.Cameras
 {
-    public class CameraFeature : Feature
+    public class CamerasFeature : Feature
     {
-        public CameraFeature(ISystemsFactory systems)
+        public CamerasFeature(ISystemsFactory systems)
         {
             Add(systems.Create<CameraFollowCharacter>());
         }

@@ -1,7 +1,7 @@
-﻿using _Project.Code.Gameplay.Input.Axis.Services.Mouse;
+﻿using _Project.Code.Gameplay.Input.Scroll.Services;
 using Entitas;
 
-namespace _Project.Code.Gameplay.Input.Axis.Systems.CameraRotationSystem
+namespace _Project.Code.Gameplay.Input.Scroll.Systems
 {
     public class InputScrollPositionSystem : IExecuteSystem
     {

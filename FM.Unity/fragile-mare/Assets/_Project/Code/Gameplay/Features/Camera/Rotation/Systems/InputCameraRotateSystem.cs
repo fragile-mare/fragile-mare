@@ -1,8 +1,7 @@
 ﻿using _Project.Code.Gameplay.Cameras.Providers;
 using Entitas;
-using UnityEngine;
 
-namespace _Project.Code.Gameplay.Input.Axis.Systems.CameraRotationSystem
+namespace _Project.Code.Gameplay.Features.Camera.Rotation.Systems
 {
     public class InputCameraRotateSystem : IExecuteSystem
     {
@@ -15,6 +14,7 @@ namespace _Project.Code.Gameplay.Input.Axis.Systems.CameraRotationSystem
             _camera = camera;
             _inputs = game.GetGroup(GameMatcher.AllOf(
                 GameMatcher.Input,
+                GameMatcher.Offset,
                 GameMatcher.XRotationCursor,
                 GameMatcher.YRotationCursor
             ));
@@ -32,7 +32,7 @@ namespace _Project.Code.Gameplay.Input.Axis.Systems.CameraRotationSystem
             {
                 _camera.SetCameraRotation(-input.YRotationCursor, input.XRotationCursor, 0);
                 
-                var position = character.WorldPosition + input.Offset;
+                var position = _camera.GetLocalRotation() * input.Offset + character.WorldPosition ;
                 _camera.SetPosition(position);
             }
         }

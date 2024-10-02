@@ -1,7 +1,7 @@
 ﻿using Entitas;
 using UnityEngine;
 
-namespace _Project.Code.Gameplay.Input.Axis.Systems.CameraRotationSystem
+namespace _Project.Code.Gameplay.Features.Camera.Zoom.Systems
 {
     public class InputZoomPositionSystem : IExecuteSystem
     {

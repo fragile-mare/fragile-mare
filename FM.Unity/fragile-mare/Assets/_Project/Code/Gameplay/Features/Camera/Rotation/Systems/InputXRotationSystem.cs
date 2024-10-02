@@ -1,16 +1,13 @@
 ﻿using _Project.Code.Gameplay.Cameras.Providers;
-using _Project.Code.Unused.UtilsUnused.WDebugUnused;
 using Entitas;
-using Debug = UnityEngine.Debug;
 
-namespace _Project.Code.Gameplay.Input.Axis.Systems.CameraRotationSystem
+namespace _Project.Code.Gameplay.Features.Camera.Rotation.Systems
 {
     public class InputXRotationSystem : IExecuteSystem
     {
         private readonly IGroup<GameEntity> _inputs;
         private readonly ICameraProvider _camera;
-
-
+        
         public InputXRotationSystem(GameContext game, ICameraProvider camera)
         {
             _camera = camera;

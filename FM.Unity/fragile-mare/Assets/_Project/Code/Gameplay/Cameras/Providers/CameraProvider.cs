@@ -49,6 +49,11 @@ namespace _Project.Code.Gameplay.Cameras.Providers
         {
             return MainCamera.transform.localEulerAngles.y;
         }
+
+        public Quaternion GetLocalRotation()
+        {
+            return MainCamera.transform.localRotation;
+        }
         
     }
 }

@@ -23,7 +23,7 @@ namespace _Project.Code.Gameplay.Cameras.Systems
         {
             foreach (var character in _characters)
             {
-                _cameraProvider.SetWorldXZ(character.WorldPosition.x, character.WorldPosition.z);
+                //_cameraProvider.SetWorldXZ(character.WorldPosition.x, character.WorldPosition.z);
             }
         }
     }

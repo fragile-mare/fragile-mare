@@ -1,7 +1,7 @@
 ﻿using Entitas;
 using UnityEngine;
 
-namespace _Project.Code.Gameplay.Input.Axis.Systems.CameraRotationSystem
+namespace _Project.Code.Gameplay.Features.Camera.Rotation.Systems
 {
     public class InputYRotationSystem : IExecuteSystem
     {
@@ -23,7 +23,8 @@ namespace _Project.Code.Gameplay.Input.Axis.Systems.CameraRotationSystem
         {
             foreach (GameEntity input in _inputs)
             {
-                input.ReplaceYRotationCursor(Mathf.Clamp(input.YRotationCursor + input.CursorY * input.MouseSens, -input.LimitRotationY, input.LimitRotationY));
+                input.ReplaceYRotationCursor(input.YRotationCursor + input.CursorY * input.MouseSens);
+                input.ReplaceYRotationCursor(Mathf.Clamp(input.YRotationCursor, -input.LimitRotationY, input.LimitRotationY));
             }
         }
     }

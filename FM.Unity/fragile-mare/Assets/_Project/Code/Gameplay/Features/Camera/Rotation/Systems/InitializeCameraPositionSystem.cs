@@ -3,7 +3,7 @@ using _Project.Code.Common.Extensions;
 using _Project.Code.Gameplay.Cameras.Providers;
 using Entitas;
 
-namespace _Project.Code.Gameplay.Input.Axis.Systems.CameraRotationSystem
+namespace _Project.Code.Gameplay.Features.Camera.Rotation.Systems
 {
     public class InitializeCameraPositionSystem : IExecuteSystem
     {
@@ -24,9 +24,7 @@ namespace _Project.Code.Gameplay.Input.Axis.Systems.CameraRotationSystem
 
             _inputs = game.GetGroup(GameMatcher.AllOf(
                 GameMatcher.Input,
-                GameMatcher.LimitRotationY,
-                GameMatcher.Offset,
-                GameMatcher.ZoomMax
+                GameMatcher.Offset
             ).NoneOf(GameMatcher.CameraOffsetInitialized));
         }
 

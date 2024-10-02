@@ -1,7 +1,7 @@
 ﻿using Entitas;
 using UnityEngine;
 
-namespace _Project.Code.Gameplay.Input.Axis.Systems.CameraRotationSystem
+namespace _Project.Code.Gameplay.Features.Camera.Rotation.Systems
 {
     public class InitializeCameraOffsetSystem : IInitializeSystem
     {
@@ -11,8 +11,8 @@ namespace _Project.Code.Gameplay.Input.Axis.Systems.CameraRotationSystem
         {
             _inputs = game.GetGroup(GameMatcher.AllOf(
                 GameMatcher.Input,
-                GameMatcher.LimitRotationY,
                 GameMatcher.Offset,
+                GameMatcher.LimitRotationY,
                 GameMatcher.ZoomMax));
         }
 

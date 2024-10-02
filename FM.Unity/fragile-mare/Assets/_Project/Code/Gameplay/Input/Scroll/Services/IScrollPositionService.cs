@@ -1,4 +1,4 @@
-﻿namespace _Project.Code.Gameplay.Input.Axis.Services.Mouse
+﻿namespace _Project.Code.Gameplay.Input.Scroll.Services
 {
     public interface IScrollPositionService
     {

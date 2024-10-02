@@ -1,12 +1,12 @@
-﻿using _Project.Code.Gameplay.Input.Axis.Services.Mouse;
+﻿using _Project.Code.Gameplay.Input.Cursor.Services;
 using Entitas;
 
-namespace _Project.Code.Gameplay.Input.Axis.Systems.CameraRotationSystem
+namespace _Project.Code.Gameplay.Input.Cursor.Systems
 {
     public class InputMouseCursorPositionSystem : IExecuteSystem
     {
-        private readonly ICursorPositionService _mouse;
         private readonly IGroup<GameEntity> _inputs;
+        private readonly ICursorPositionService _mouse;
         
         public InputMouseCursorPositionSystem(GameContext game, ICursorPositionService mouse)
         {
