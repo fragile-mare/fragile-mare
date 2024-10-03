@@ -74,5 +74,10 @@ namespace _Project.Code.Gameplay.Cameras.Providers
             return MainCamera.transform.localRotation;
         }
         
+        public Vector3 GetCameraPositionXZ()
+        {
+            return MainCamera.transform.forward;
+        }
+        
     }
 }
