@@ -18,6 +18,6 @@ namespace _Project.Code.Gameplay.Cameras.Providers
         Transform SetWorldXZ(float x, float z);
         Vector3 GetCameraForwardXZ();
         float GetCameraLocalY();
-        Vector3 GetCameraPositionXZ();
+        Quaternion GetCameraRotationXYZ();
     }
 }

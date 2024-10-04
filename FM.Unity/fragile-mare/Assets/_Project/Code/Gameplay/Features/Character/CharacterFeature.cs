@@ -12,6 +12,8 @@ namespace _Project.Code.Gameplay.Features.Character
             Add(systems.Create<SetCharacterDirectionByInputSystem>());
             Add(systems.Create<SetCharacterSprintByInputSystem>());
             Add(systems.Create<SetCharacterDashByInputSystem>());
+            
+            Add(systems.Create<RotationCharacterSystem>());
         }
     }
 }
