@@ -79,10 +79,10 @@ namespace _Project.Code.Gameplay.Cameras.Providers
             return MainCamera.transform.forward;
         }
         
-        public Vector3 GetCameraPositionXZ()
+        public Quaternion GetCameraRotationXYZ()
         {
-            var position = MainCamera.transform.position;
-            return new Vector3(position.x, 0, position.z);
+            var rotation = MainCamera.transform.rotation;
+            return new Quaternion(rotation.x, rotation.y, rotation.z, rotation.w);
         }
         
     }
