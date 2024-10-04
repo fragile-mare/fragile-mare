@@ -25,8 +25,6 @@ namespace _Project.Code.Gameplay.Features.Movement.Sprint
         {
             foreach (GameEntity mover in _movers)
             {
-                if (mover.isMoving) mover.isMoving = false;
-                
                 var direction = new Vector3(mover.Direction.x, 0, mover.Direction.y);
                 mover.ReplaceWorldPosition(mover.WorldPosition +
                                            direction.normalized * mover.SprintSpeed * _time.DeltaTime);
