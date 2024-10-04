@@ -25,9 +25,9 @@ namespace _Project.Code.Gameplay.Features.Movement.Move
         {
             foreach (GameEntity mover in _movers)
             {
-                var direction = new Vector3(mover.Direction.x, 0, mover.Direction.y);
+                var worldDirection = new Vector3(mover.Direction.x, 0, mover.Direction.y);
                 mover.ReplaceWorldPosition(mover.WorldPosition +
-                                           direction.normalized * mover.Speed * _time.DeltaTime);
+                                                   worldDirection.normalized * mover.Speed * _time.DeltaTime);
             }
         }
     }

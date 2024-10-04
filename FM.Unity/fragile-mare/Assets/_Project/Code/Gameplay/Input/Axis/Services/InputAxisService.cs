@@ -24,7 +24,5 @@ namespace _Project.Code.Gameplay.Input.Axis.Services
 
             return true;
         }
-
-        
     }
 }

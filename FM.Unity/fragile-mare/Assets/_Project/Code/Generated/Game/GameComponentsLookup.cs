@@ -44,12 +44,25 @@ public static class GameComponentsLookup {
     public const int CanSprint = 33;
     public const int Sprinting = 34;
     public const int SprintSpeed = 35;
-    public const int DashButtonPressed = 36;
-    public const int Input = 37;
-    public const int InputMovementAxis = 38;
-    public const int SprintButtonPressed = 39;
+    public const int CameraOffsetInitialized = 36;
+    public const int CursorX = 37;
+    public const int CursorY = 38;
+    public const int DashButtonPressed = 39;
+    public const int Input = 40;
+    public const int InputCursorAxis = 41;
+    public const int InputMovementAxis = 42;
+    public const int LimitRotationY = 43;
+    public const int MouseScrollWheel = 44;
+    public const int MouseSens = 45;
+    public const int Offset = 46;
+    public const int SprintButtonPressed = 47;
+    public const int XRotationCursor = 48;
+    public const int YRotationCursor = 49;
+    public const int Zoom = 50;
+    public const int ZoomMax = 51;
+    public const int ZoomMin = 52;
 
-    public const int TotalComponents = 40;
+    public const int TotalComponents = 53;
 
     public static readonly string[] componentNames = {
         "Destructed",
@@ -88,10 +101,23 @@ public static class GameComponentsLookup {
         "CanSprint",
         "Sprinting",
         "SprintSpeed",
+        "CameraOffsetInitialized",
+        "CursorX",
+        "CursorY",
         "DashButtonPressed",
         "Input",
+        "InputCursorAxis",
         "InputMovementAxis",
-        "SprintButtonPressed"
+        "LimitRotationY",
+        "MouseScrollWheel",
+        "MouseSens",
+        "Offset",
+        "SprintButtonPressed",
+        "XRotationCursor",
+        "YRotationCursor",
+        "Zoom",
+        "ZoomMax",
+        "ZoomMin"
     };
 
     public static readonly System.Type[] componentTypes = {
@@ -131,9 +157,22 @@ public static class GameComponentsLookup {
         typeof(_Project.Code.Gameplay.Features.Movement.Sprint.CanSprint),
         typeof(_Project.Code.Gameplay.Features.Movement.Sprint.Sprinting),
         typeof(_Project.Code.Gameplay.Features.Movement.Sprint.SprintSpeed),
+        typeof(_Project.Code.Gameplay.Input.CameraOffsetInitialized),
+        typeof(_Project.Code.Gameplay.Input.CursorX),
+        typeof(_Project.Code.Gameplay.Input.CursorY),
         typeof(_Project.Code.Gameplay.Input.DashButtonPressed),
         typeof(_Project.Code.Gameplay.Input.Input),
+        typeof(_Project.Code.Gameplay.Input.InputCursorAxis),
         typeof(_Project.Code.Gameplay.Input.InputMovementAxis),
-        typeof(_Project.Code.Gameplay.Input.SprintButtonPressed)
+        typeof(_Project.Code.Gameplay.Input.LimitRotationY),
+        typeof(_Project.Code.Gameplay.Input.MouseScrollWheel),
+        typeof(_Project.Code.Gameplay.Input.MouseSens),
+        typeof(_Project.Code.Gameplay.Input.Offset),
+        typeof(_Project.Code.Gameplay.Input.SprintButtonPressed),
+        typeof(_Project.Code.Gameplay.Input.XRotationCursor),
+        typeof(_Project.Code.Gameplay.Input.YRotationCursor),
+        typeof(_Project.Code.Gameplay.Input.Zoom),
+        typeof(_Project.Code.Gameplay.Input.ZoomMax),
+        typeof(_Project.Code.Gameplay.Input.ZoomMin)
     };
 }
