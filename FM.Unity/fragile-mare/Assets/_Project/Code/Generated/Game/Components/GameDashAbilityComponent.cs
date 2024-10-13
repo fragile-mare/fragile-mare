@@ -33,7 +33,7 @@ public sealed partial class GameMatcher {
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    static readonly _Project.Code.Gameplay.Features.Ability.AbilityComponents.DashAbility dashAbilityComponent = new _Project.Code.Gameplay.Features.Ability.AbilityComponents.DashAbility();
+    static readonly _Project.Code.Gameplay.Features.Movement.Dash.DashComponents.DashAbility dashAbilityComponent = new _Project.Code.Gameplay.Features.Movement.Dash.DashComponents.DashAbility();
 
     public bool isDashAbility {
         get { return HasComponent(GameComponentsLookup.DashAbility); }

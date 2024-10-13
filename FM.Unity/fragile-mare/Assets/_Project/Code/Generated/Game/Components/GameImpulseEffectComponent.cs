@@ -33,7 +33,7 @@ public sealed partial class GameMatcher {
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    static readonly _Project.Code.Gameplay.Features.Effect.ImpulseEffect impulseEffectComponent = new _Project.Code.Gameplay.Features.Effect.ImpulseEffect();
+    static readonly _Project.Code.Gameplay.Features.Physics.Impulse.ImpulseComponents.ImpulseEffect impulseEffectComponent = new _Project.Code.Gameplay.Features.Physics.Impulse.ImpulseComponents.ImpulseEffect();
 
     public bool isImpulseEffect {
         get { return HasComponent(GameComponentsLookup.ImpulseEffect); }

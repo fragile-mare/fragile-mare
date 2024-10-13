@@ -1,17 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using _Project.Code.Gameplay.Features.Effect.Configs;
-using _Project.Code.Gameplay.Features.Status.Configs;
+﻿using System.Collections.Generic;
+using _Project.Code.Gameplay.Features.Ability.Builders;
+using _Project.Code.Gameplay.Features.Ability.Factories;
+using _Project.Code.Gameplay.Features.Movement.Dash.Abilities;
+using _Project.Code.Gameplay.Features.Physics.RelativePush.Abilities;
+using _Project.Code.Infrastructure.CustomUnity;
+using UnityEngine;
 
 namespace _Project.Code.Gameplay.Features.Ability.Configs
 {
-    [Serializable]
-    public class AbilityConfig
+    [CreateAssetMenu(menuName = "Fragile Mare/Configs/Ability", fileName = "AbilityConfig")]
+    public class AbilityConfig : ScriptableObject
     {
-        public AbilityType type;
-        public float cooldown;
-
-        public List<StatusSetup> statuses;
-        public List<EffectSetup> effects;
+        public CustomUnityEnum<IAbilityBuilder> ability = new()
+        {
+            values = new List<IAbilityBuilder>
+            {
+                new DashAbilityBuilder(),
+                new SphereRelativePushAbilityBuilder()
+            }
+        };
     }
 }

@@ -1,5 +1,6 @@
 ﻿using _Project.Code.Gameplay.Features.Effect.Configs;
 using _Project.Code.Gameplay.Features.Effect.Factories;
+using _Project.Code.Infrastructure.CustomUnity;
 using Entitas;
 
 namespace _Project.Code.Gameplay.Features.Ability.Systems
@@ -24,9 +25,9 @@ namespace _Project.Code.Gameplay.Features.Ability.Systems
         {
             foreach (GameEntity ability in _abilities)
             foreach (int targetId in ability.TargetBuffer)
-            foreach (EffectSetup effectSetup in ability.EffectList)
+            foreach (EffectConfig effectConfig in ability.EffectList)
             {
-                _effectFactory.CreateEffect(effectSetup, targetId, ability.HolderId);
+                _effectFactory.CreateEffect(effectConfig.effect.Current, targetId, ability.HolderId);
             }
         }
     }

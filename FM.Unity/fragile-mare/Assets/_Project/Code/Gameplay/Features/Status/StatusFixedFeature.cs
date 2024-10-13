@@ -7,8 +7,6 @@ namespace _Project.Code.Gameplay.Features.Status
     {
         public StatusFixedFeature(ISystemsFactory systems)
         {
-            Add(systems.Create<ProcessAccelerationStatusSystem>());
-            Add(systems.Create<ProcessSphereRelativePushStatusSystem>());
         }
     }
 }

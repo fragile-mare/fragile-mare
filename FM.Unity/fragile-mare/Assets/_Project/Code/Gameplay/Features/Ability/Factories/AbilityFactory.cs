@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using _Project.Code.Common.Entity;
+﻿using System.Collections.Generic;
 using _Project.Code.Common.Extensions;
 using _Project.Code.Common.Services.Identifiers;
-using _Project.Code.Gameplay.Features.Ability.Configs;
+using _Project.Code.Gameplay.Features.Ability.Builders;
+using _Project.Code.Infrastructure.CustomUnity;
 
 namespace _Project.Code.Gameplay.Features.Ability.Factories
 {
@@ -16,46 +15,15 @@ namespace _Project.Code.Gameplay.Features.Ability.Factories
             _identifierService = identifierService;
         }
 
-        public GameEntity CreateAbility(AbilityConfig abilityConfig, int holderId)
+        public GameEntity CreateAbility<TBuilder>(TBuilder builder, int holderId) 
+            where TBuilder : IAbilityBuilder
         {
-            GameEntity entity;
-
-            switch (abilityConfig.type)
-            {
-                case AbilityType.Dash:
-                    entity = CreateDashAbility();
-                    break;
-                case AbilityType.SphereRelativePush:
-                    entity = CreateSphereRelativePushAbility();
-                    break;
-                default:
-                    throw new Exception($"Unknown ability with type id {abilityConfig.type}");
-            }
-
-            return entity
+            return builder
+                .Build()
                 .AddId(_identifierService.Next())
                 .AddHolderId(holderId)
                 .AddTargetBuffer(new List<int> { holderId })
-                .AddAbilityType(abilityConfig.type)
-                .AddStatusList(abilityConfig.statuses)
-                .AddEffectList(abilityConfig.effects)
-                .AddCooldownInterval(abilityConfig.cooldown)
-                .AddCooldownTimer(0)
                 .With(e => e.isAbility = true);
-        }
-
-
-        private GameEntity CreateDashAbility()
-        {
-            return CreateEntity.Empty()
-                .With(e => e.isDashAbility = true);
-        }
-
-
-        private GameEntity CreateSphereRelativePushAbility()
-        {
-            return CreateEntity.Empty()
-                .With(e => e.isSphereRelativePushAbility = true);
         }
     }
 }

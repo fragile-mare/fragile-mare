@@ -34,10 +34,10 @@ public sealed partial class GameMatcher {
 public partial class GameEntity {
 
     public _Project.Code.Gameplay.Features.Ability.AbilityComponents.EffectList effectList { get { return (_Project.Code.Gameplay.Features.Ability.AbilityComponents.EffectList)GetComponent(GameComponentsLookup.EffectList); } }
-    public System.Collections.Generic.List<_Project.Code.Gameplay.Features.Effect.Configs.EffectSetup> EffectList { get { return effectList.Value; } }
+    public System.Collections.Generic.List<_Project.Code.Gameplay.Features.Effect.Configs.EffectConfig> EffectList { get { return effectList.Value; } }
     public bool hasEffectList { get { return HasComponent(GameComponentsLookup.EffectList); } }
 
-    public GameEntity AddEffectList(System.Collections.Generic.List<_Project.Code.Gameplay.Features.Effect.Configs.EffectSetup> newValue) {
+    public GameEntity AddEffectList(System.Collections.Generic.List<_Project.Code.Gameplay.Features.Effect.Configs.EffectConfig> newValue) {
         var index = GameComponentsLookup.EffectList;
         var component = (_Project.Code.Gameplay.Features.Ability.AbilityComponents.EffectList)CreateComponent(index, typeof(_Project.Code.Gameplay.Features.Ability.AbilityComponents.EffectList));
         component.Value = newValue;
@@ -45,7 +45,7 @@ public partial class GameEntity {
         return this;
     }
 
-    public GameEntity ReplaceEffectList(System.Collections.Generic.List<_Project.Code.Gameplay.Features.Effect.Configs.EffectSetup> newValue) {
+    public GameEntity ReplaceEffectList(System.Collections.Generic.List<_Project.Code.Gameplay.Features.Effect.Configs.EffectConfig> newValue) {
         var index = GameComponentsLookup.EffectList;
         var component = (_Project.Code.Gameplay.Features.Ability.AbilityComponents.EffectList)CreateComponent(index, typeof(_Project.Code.Gameplay.Features.Ability.AbilityComponents.EffectList));
         component.Value = newValue;

@@ -2,9 +2,7 @@
 using _Project.Code.Common.Extensions;
 using _Project.Code.Common.Services.Identifiers;
 using _Project.Code.Common.Services.StaticData;
-using _Project.Code.Gameplay.Features.Ability.Configs;
 using _Project.Code.Gameplay.Features.Ability.Factories;
-using _Project.Code.Gameplay.Features.Status.Configs;
 using _Project.Code.Gameplay.Features.Status.Factories;
 using UnityEngine;
 
@@ -43,15 +41,14 @@ namespace _Project.Code.Gameplay.Features.Character.Factory
                 .With(x => x.isCanMove = true)
                 .With(x => x.isForceMovePosition = true);
 
-
-            foreach (StatusSetup status in _staticData.CharacterConfig.statuses)
+            foreach (var config in _staticData.CharacterConfig.statuses)
             {
-                _statusFactory.CreateStatus(status, character.Id, character.Id);
+                _statusFactory.CreateStatus(config.status.Current, character.Id, character.Id);
             }
 
-            foreach (AbilityConfig ability in _staticData.CharacterConfig.abilities)
+            foreach (var ability in _staticData.CharacterConfig.abilities)
             {
-                _abilityFactory.CreateAbility(ability, character.Id);
+                _abilityFactory.CreateAbility(ability.ability.Current, character.Id);
             }
 
 
