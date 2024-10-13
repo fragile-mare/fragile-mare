@@ -5,9 +5,12 @@ using _Project.Code.Common.Services.Physics;
 using _Project.Code.Common.Services.StaticData;
 using _Project.Code.Common.Services.Time;
 using _Project.Code.Gameplay.Cameras.Providers;
-using _Project.Code.Gameplay.Features.Character;
+using _Project.Code.Gameplay.Features.Ability.Factories;
 using _Project.Code.Gameplay.Features.Character.Factory;
 using _Project.Code.Gameplay.Features.Character.Systems;
+using _Project.Code.Gameplay.Features.Dummy.Factory;
+using _Project.Code.Gameplay.Features.Effect.Factories;
+using _Project.Code.Gameplay.Features.Status.Factories;
 using _Project.Code.Gameplay.Input.Axis.Services;
 using _Project.Code.Gameplay.Input.Button.Services;
 using _Project.Code.Infrastructure.Scenes;
@@ -15,7 +18,6 @@ using _Project.Code.Infrastructure.States.Factory;
 using _Project.Code.Infrastructure.States.GameStates;
 using _Project.Code.Infrastructure.States.StateMachine;
 using _Project.Code.Infrastructure.Systems;
-using _Project.Code.Infrastructure.View;
 using _Project.Code.Infrastructure.View.Factory;
 using Zenject;
 
@@ -23,6 +25,13 @@ namespace _Project.Code.Infrastructure.Installers
 {
     public class BootstrapInstaller : MonoInstaller, IInitializable, ICoroutineRunner
     {
+        public void Initialize()
+        {
+            Container.Resolve<IGameStateMachine>().Enter<BootstrapState>();
+
+            Container.Resolve<IStaticDataService>().LoadAll();
+        }
+
         public override void InstallBindings()
         {
             BindInstallers();
@@ -59,7 +68,11 @@ namespace _Project.Code.Infrastructure.Installers
         private void BindGameplayFactories()
         {
             Container.Bind<ICharacterFactory>().To<CharacterFactory>().AsSingle();
+            Container.Bind<IDummyFactory>().To<DummyFactory>().AsSingle();
             Container.Bind<IEntityViewFactory>().To<EntityViewFactory>().AsSingle();
+            Container.Bind<IEffectFactory>().To<EffectFactory>().AsSingle();
+            Container.Bind<IStatusFactory>().To<StatusFactory>().AsSingle();
+            Container.Bind<IAbilityFactory>().To<AbilityFactory>().AsSingle();
         }
 
         private void BindLoaders()
@@ -84,15 +97,8 @@ namespace _Project.Code.Infrastructure.Installers
             Container.Bind<ICollisionRegistry>().To<CollisionRegistry>().AsSingle();
             Container.Bind<IAssetProvider>().To<AssetProvider>().AsSingle();
             Container.Bind<ILevelDataProvider>().To<LevelDataProvider>().AsSingle();
-            
-            Container.Bind<ICameraProvider>().To<CameraProvider>().AsSingle();
-        }
 
-        public void Initialize()
-        {
-            Container.Resolve<IGameStateMachine>().Enter<BootstrapState>();
-            
-            Container.Resolve<IStaticDataService>().LoadAll();
+            Container.Bind<ICameraProvider>().To<CameraProvider>().AsSingle();
         }
     }
 }
