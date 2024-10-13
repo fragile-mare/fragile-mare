@@ -33,7 +33,7 @@ public sealed partial class GameMatcher {
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    static readonly _Project.Code.Gameplay.Features.Effect.DashEffect dashEffectComponent = new _Project.Code.Gameplay.Features.Effect.DashEffect();
+    static readonly _Project.Code.Gameplay.Features.Movement.Dash.DashComponents.DashEffect dashEffectComponent = new _Project.Code.Gameplay.Features.Movement.Dash.DashComponents.DashEffect();
 
     public bool isDashEffect {
         get { return HasComponent(GameComponentsLookup.DashEffect); }

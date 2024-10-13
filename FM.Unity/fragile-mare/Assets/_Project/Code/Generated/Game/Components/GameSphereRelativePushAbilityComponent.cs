@@ -33,7 +33,7 @@ public sealed partial class GameMatcher {
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    static readonly _Project.Code.Gameplay.Features.Ability.AbilityComponents.SphereRelativePushAbility sphereRelativePushAbilityComponent = new _Project.Code.Gameplay.Features.Ability.AbilityComponents.SphereRelativePushAbility();
+    static readonly _Project.Code.Gameplay.Features.Physics.RelativePush.RelativePushComponents.SphereRelativePushAbility sphereRelativePushAbilityComponent = new _Project.Code.Gameplay.Features.Physics.RelativePush.RelativePushComponents.SphereRelativePushAbility();
 
     public bool isSphereRelativePushAbility {
         get { return HasComponent(GameComponentsLookup.SphereRelativePushAbility); }

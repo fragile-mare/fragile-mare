@@ -33,13 +33,13 @@ public sealed partial class GameMatcher {
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    public _Project.Code.Gameplay.Features.Physic.RigidbodyComponent rigidbody { get { return (_Project.Code.Gameplay.Features.Physic.RigidbodyComponent)GetComponent(GameComponentsLookup.Rigidbody); } }
+    public _Project.Code.Gameplay.Features.Physics.RigidbodyComponent rigidbody { get { return (_Project.Code.Gameplay.Features.Physics.RigidbodyComponent)GetComponent(GameComponentsLookup.Rigidbody); } }
     public UnityEngine.Rigidbody Rigidbody { get { return rigidbody.Value; } }
     public bool hasRigidbody { get { return HasComponent(GameComponentsLookup.Rigidbody); } }
 
     public GameEntity AddRigidbody(UnityEngine.Rigidbody newValue) {
         var index = GameComponentsLookup.Rigidbody;
-        var component = (_Project.Code.Gameplay.Features.Physic.RigidbodyComponent)CreateComponent(index, typeof(_Project.Code.Gameplay.Features.Physic.RigidbodyComponent));
+        var component = (_Project.Code.Gameplay.Features.Physics.RigidbodyComponent)CreateComponent(index, typeof(_Project.Code.Gameplay.Features.Physics.RigidbodyComponent));
         component.Value = newValue;
         AddComponent(index, component);
         return this;
@@ -47,7 +47,7 @@ public partial class GameEntity {
 
     public GameEntity ReplaceRigidbody(UnityEngine.Rigidbody newValue) {
         var index = GameComponentsLookup.Rigidbody;
-        var component = (_Project.Code.Gameplay.Features.Physic.RigidbodyComponent)CreateComponent(index, typeof(_Project.Code.Gameplay.Features.Physic.RigidbodyComponent));
+        var component = (_Project.Code.Gameplay.Features.Physics.RigidbodyComponent)CreateComponent(index, typeof(_Project.Code.Gameplay.Features.Physics.RigidbodyComponent));
         component.Value = newValue;
         ReplaceComponent(index, component);
         return this;

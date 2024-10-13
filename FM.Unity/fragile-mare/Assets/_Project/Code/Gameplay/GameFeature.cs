@@ -7,6 +7,7 @@ using _Project.Code.Gameplay.Features.Dummy;
 using _Project.Code.Gameplay.Features.Effect;
 using _Project.Code.Gameplay.Features.Energy;
 using _Project.Code.Gameplay.Features.Movement;
+using _Project.Code.Gameplay.Features.Physics;
 using _Project.Code.Gameplay.Features.Status;
 using _Project.Code.Gameplay.Input;
 using _Project.Code.Infrastructure.Systems;

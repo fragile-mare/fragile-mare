@@ -1,7 +1,6 @@
 ﻿using _Project.Code.Common.Entity;
 using _Project.Code.Common.Extensions;
 using _Project.Code.Common.Services.Identifiers;
-using _Project.Code.Gameplay.Features.Ability.Configs;
 using _Project.Code.Gameplay.Features.Ability.Factories;
 using _Project.Code.Gameplay.Features.Dummy.Configs;
 
@@ -27,9 +26,9 @@ namespace _Project.Code.Gameplay.Features.Dummy.Factory
                 .With(e => e.isForceMovePosition = true)
                 .With(e => e.isDummy = true);
 
-            foreach (AbilityConfig ability in dummyConfig.abilities)
+            foreach (var config in dummyConfig.abilities)
             {
-                _abilityFactory.CreateAbility(ability, dummy.Id);
+                _abilityFactory.CreateAbility(config.ability.Current, dummy.Id);
             }
 
             return dummy;

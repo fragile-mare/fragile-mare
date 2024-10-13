@@ -34,10 +34,10 @@ public sealed partial class GameMatcher {
 public partial class GameEntity {
 
     public _Project.Code.Gameplay.Features.Ability.AbilityComponents.StatusList statusList { get { return (_Project.Code.Gameplay.Features.Ability.AbilityComponents.StatusList)GetComponent(GameComponentsLookup.StatusList); } }
-    public System.Collections.Generic.List<_Project.Code.Gameplay.Features.Status.Configs.StatusSetup> StatusList { get { return statusList.Value; } }
+    public System.Collections.Generic.List<_Project.Code.Gameplay.Features.Status.Configs.StatusConfig> StatusList { get { return statusList.Value; } }
     public bool hasStatusList { get { return HasComponent(GameComponentsLookup.StatusList); } }
 
-    public GameEntity AddStatusList(System.Collections.Generic.List<_Project.Code.Gameplay.Features.Status.Configs.StatusSetup> newValue) {
+    public GameEntity AddStatusList(System.Collections.Generic.List<_Project.Code.Gameplay.Features.Status.Configs.StatusConfig> newValue) {
         var index = GameComponentsLookup.StatusList;
         var component = (_Project.Code.Gameplay.Features.Ability.AbilityComponents.StatusList)CreateComponent(index, typeof(_Project.Code.Gameplay.Features.Ability.AbilityComponents.StatusList));
         component.Value = newValue;
@@ -45,7 +45,7 @@ public partial class GameEntity {
         return this;
     }
 
-    public GameEntity ReplaceStatusList(System.Collections.Generic.List<_Project.Code.Gameplay.Features.Status.Configs.StatusSetup> newValue) {
+    public GameEntity ReplaceStatusList(System.Collections.Generic.List<_Project.Code.Gameplay.Features.Status.Configs.StatusConfig> newValue) {
         var index = GameComponentsLookup.StatusList;
         var component = (_Project.Code.Gameplay.Features.Ability.AbilityComponents.StatusList)CreateComponent(index, typeof(_Project.Code.Gameplay.Features.Ability.AbilityComponents.StatusList));
         component.Value = newValue;

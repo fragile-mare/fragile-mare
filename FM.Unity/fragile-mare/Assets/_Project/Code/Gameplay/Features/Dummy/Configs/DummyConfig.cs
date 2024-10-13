@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using _Project.Code.Gameplay.Features.Ability.Configs;
+using _Project.Code.Infrastructure.CustomUnity;
 using _Project.Code.Infrastructure.View;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace _Project.Code.Gameplay.Features.Dummy.Configs
 {

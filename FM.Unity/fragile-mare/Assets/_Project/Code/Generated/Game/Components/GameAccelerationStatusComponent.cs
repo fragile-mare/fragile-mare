@@ -33,7 +33,7 @@ public sealed partial class GameMatcher {
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    static readonly _Project.Code.Gameplay.Features.Status.AccelerationStatus accelerationStatusComponent = new _Project.Code.Gameplay.Features.Status.AccelerationStatus();
+    static readonly _Project.Code.Gameplay.Features.Physics.Acceleration.AccelerationComponents.AccelerationStatus accelerationStatusComponent = new _Project.Code.Gameplay.Features.Physics.Acceleration.AccelerationComponents.AccelerationStatus();
 
     public bool isAccelerationStatus {
         get { return HasComponent(GameComponentsLookup.AccelerationStatus); }

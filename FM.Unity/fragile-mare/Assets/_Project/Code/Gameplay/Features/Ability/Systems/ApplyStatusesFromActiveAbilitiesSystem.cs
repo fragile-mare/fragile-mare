@@ -24,9 +24,9 @@ namespace _Project.Code.Gameplay.Features.Ability.Systems
         {
             foreach (GameEntity ability in _abilities)
             foreach (int targetId in ability.TargetBuffer)
-            foreach (StatusSetup statusConfig in ability.StatusList)
+            foreach (StatusConfig statusConfig in ability.StatusList)
             {
-                _statusFactory.CreateStatus(statusConfig, targetId, ability.HolderId);
+                _statusFactory.CreateStatus(statusConfig.status.Current, targetId, ability.HolderId);
             }
         }
     }

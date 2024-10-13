@@ -1,9 +1,10 @@
-﻿using _Project.Code.Gameplay.Features.Status.Configs;
+﻿using _Project.Code.Gameplay.Features.Status.Builders;
 
 namespace _Project.Code.Gameplay.Features.Status.Factories
 {
     public interface IStatusFactory
     {
-        GameEntity CreateStatus(StatusSetup statusSetup, int targetId, int producerId);
+        public GameEntity CreateStatus<TBuilder>(TBuilder builder, int targetId, int producerId)
+            where TBuilder : IStatusBuilder;
     }
 }
