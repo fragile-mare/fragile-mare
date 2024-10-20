@@ -13,6 +13,7 @@ namespace _Project.Code.Gameplay.Features.Movement.Dash.Systems
         public DashActivationSystem(GameContext game)
         {
             _dashers = game.GetGroup(GameMatcher.AllOf(
+                GameMatcher.CanDash,
                 GameMatcher.DashActivated,
                 GameMatcher.DashDuration,
                 GameMatcher.DashTimer

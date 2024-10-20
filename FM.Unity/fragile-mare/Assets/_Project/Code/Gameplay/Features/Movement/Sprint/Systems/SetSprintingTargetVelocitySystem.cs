@@ -12,6 +12,7 @@ namespace _Project.Code.Gameplay.Features.Movement.Sprint.Systems
         {
             _sprinters = game.GetGroup(GameMatcher
                 .AllOf(GameMatcher.Id,
+                    GameMatcher.CanSprint,
                     GameMatcher.Sprinting,
                     GameMatcher.Rigidbody));
             _accelerations = game.GetGroup(GameMatcher
