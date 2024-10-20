@@ -6,8 +6,8 @@ namespace _Project.Code.Gameplay.Features.Movement.Dash.Systems
 {
     public class DirectionDeltaDashSystem : IExecuteSystem
     {
-        private readonly ITimeService _time;
         private readonly IGroup<GameEntity> _movers;
+        private readonly ITimeService _time;
 
         public DirectionDeltaDashSystem(GameContext game, ITimeService time)
         {
@@ -18,9 +18,9 @@ namespace _Project.Code.Gameplay.Features.Movement.Dash.Systems
                 GameMatcher.WorldPosition,
                 GameMatcher.DashSpeed,
                 GameMatcher.DashDirection
-            ));
+            ).NoneOf(GameMatcher.Rigidbody));
         }
-        
+
         public void Execute()
         {
             foreach (GameEntity mover in _movers)

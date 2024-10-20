@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23f111d9051940f4940e48b3911b3298, type: 3}
+  m_Name: DummyPushStatus
+  m_EditorClassIdentifier: 
+  status:
+    values:
+    - rid: 3913135956658487307
+    - rid: 3913135956658487308
+    chosenValueIndex: 1
+    chosenValue: SphereRelativePushStatusBuilder
+  references:
+    version: 2
+    RefIds:
+    - rid: 3913135956658487307
+      type: {class: AccelerationStatusBuilder, ns: _Project.Code.Gameplay.Features.Physics.Acceleration.Statuses,
+        asm: Assembly-CSharp}
+      data:
+        value: 0
+        duration: 0
+        appliableAxis: {x: 0, y: 0, z: 0}
+    - rid: 3913135956658487308
+      type: {class: SphereRelativePushStatusBuilder, ns: _Project.Code.Gameplay.Features.Physics.RelativePush.Statuses,
+        asm: Assembly-CSharp}
+      data:
+        value: 10
+        duration: 5
+        radius: 5

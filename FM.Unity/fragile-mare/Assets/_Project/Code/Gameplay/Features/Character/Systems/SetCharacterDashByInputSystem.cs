@@ -12,7 +12,7 @@ namespace _Project.Code.Gameplay.Features.Character.Systems
             _characters = game.GetGroup(GameMatcher.Character);
             _inputs = game.GetGroup(GameMatcher.Input);
         }
-        
+
         public void Execute()
         {
             foreach (var input in _inputs)

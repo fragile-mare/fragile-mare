@@ -9,10 +9,10 @@ namespace _Project.Code.Gameplay.Features.Movement.Dash
         {
             Add(systems.Create<DashRegenerationTimerSystem>());
             Add(systems.Create<DashRegenerationApplySystem>());
-            
+
             Add(systems.Create<DashTimerSystem>());
             Add(systems.Create<DashActivationSystem>());
-            
+
             Add(systems.Create<DirectionDeltaDashSystem>());
         }
     }

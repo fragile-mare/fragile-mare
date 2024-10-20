@@ -8,11 +8,11 @@ namespace _Project.Code.Gameplay.Features.Character
         public CharacterFeature(ISystemsFactory systems)
         {
             Add(systems.Create<InitializeCharacterSystem>());
-            
+
             Add(systems.Create<SetCharacterDirectionByInputSystem>());
             Add(systems.Create<SetCharacterSprintByInputSystem>());
             Add(systems.Create<SetCharacterDashByInputSystem>());
-            
+
             Add(systems.Create<RotationCharacterSystem>());
         }
     }

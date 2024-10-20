@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using _Project.Code.Common.Services.Time;
 using Entitas;
 
 namespace _Project.Code.Gameplay.Features.Movement.Dash.Systems
@@ -25,7 +24,7 @@ namespace _Project.Code.Gameplay.Features.Movement.Dash.Systems
             foreach (GameEntity dasher in _dashers.GetEntities(_buffer))
             {
                 var requiredCount = dasher.DashCurrentCount + dasher.DashRegenAmountToApply;
-                
+
                 dasher.ReplaceDashCurrentCount(Math.Min(dasher.DashMaxCount, requiredCount));
 
                 dasher.RemoveDashRegenAmountToApply();

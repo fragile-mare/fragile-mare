@@ -1,9 +1,8 @@
-﻿using _Project.Code.Common.Services.Time;
-using _Project.Code.Gameplay.Cameras.Providers;
+﻿using _Project.Code.Gameplay.Cameras.Providers;
 using Entitas;
 using UnityEngine;
 
-namespace _Project.Code.Gameplay.Features.Movement.Move
+namespace _Project.Code.Gameplay.Features.Movement.Move.Systems
 {
     public class DirectionCharacterMoveSystem : IExecuteSystem
     {
@@ -18,13 +17,13 @@ namespace _Project.Code.Gameplay.Features.Movement.Move
                 GameMatcher.Character,
                 GameMatcher.Direction
             ));
-            
+
             _inputs = game.GetGroup(GameMatcher.AllOf(
                 GameMatcher.Input,
                 GameMatcher.InputMovementAxis
             ));
         }
-        
+
         public void Execute()
         {
             foreach (GameEntity character in _characters)
@@ -37,17 +36,17 @@ namespace _Project.Code.Gameplay.Features.Movement.Move
                     Vector2 direction = Vector2.zero;
 
                     var cameraPosition = _camera.GetCameraForwardXZ();
-                
+
                     if (verticalInput > 0)
                         direction += new Vector2(cameraPosition.x, cameraPosition.z).normalized;
                     else if (verticalInput < 0)
-                        direction += new Vector2(-cameraPosition.x, -cameraPosition.z).normalized; 
-                
+                        direction += new Vector2(-cameraPosition.x, -cameraPosition.z).normalized;
+
                     if (horizontalInput > 0)
-                        direction += new Vector2(cameraPosition.z, -cameraPosition.x).normalized; 
+                        direction += new Vector2(cameraPosition.z, -cameraPosition.x).normalized;
                     else if (horizontalInput < 0)
-                        direction += new Vector2(-cameraPosition.z, cameraPosition.x).normalized; 
-                    
+                        direction += new Vector2(-cameraPosition.z, cameraPosition.x).normalized;
+
                     character.ReplaceDirection(direction);
                 }
             }
