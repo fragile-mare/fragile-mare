@@ -12,8 +12,7 @@ namespace _Project.Code.Gameplay.Features.Movement.TransformPosition
         {
             _rigidbodies = game.GetGroup(GameMatcher
                 .AllOf(GameMatcher.WorldPosition,
-                    GameMatcher.Rigidbody,
-                    GameMatcher.ForceMovePosition));
+                    GameMatcher.Rigidbody));
         }
 
         public void Execute()

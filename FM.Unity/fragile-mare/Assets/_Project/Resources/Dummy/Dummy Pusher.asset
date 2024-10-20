@@ -15,4 +15,4 @@ MonoBehaviour:
   prefab: {fileID: 1872713288925257450, guid: cce0ed0df1806ec4b8ad58ca92ce5204, type: 3}
   at: {x: 15, y: 0, z: 15}
   abilities:
-  - {fileID: 11400000, guid: 57cc8f2f09d7b9341a9be9338e4dc7dd, type: 2}
+  - {fileID: 11400000, guid: 8666ffb7c6b8f9645bf77afffb926500, type: 2}

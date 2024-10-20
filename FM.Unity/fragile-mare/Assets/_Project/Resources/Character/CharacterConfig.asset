@@ -14,11 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 4
   sprintSpeed: 10
+  dashSpeed: 28
+  dashDuration: 0.2
+  dashMaxCount: 5
+  dashRegenDuration: 3
+  dashRegenAmount: 1
   maxEnergy: 0
   currentEnergy: 0
   energyToRegen: 0
   prefab: {fileID: -4483075354276722165, guid: 9060e7d3ad69e354286b2426ef3e2d4e, type: 3}
-  abilities:
-  - {fileID: 11400000, guid: 74c1f4eb7ebca1446ae5bc94582a4726, type: 2}
+  abilities: []
   statuses:
-  - {fileID: 11400000, guid: 5adba7f3857f5f2479f76b3f5253c52a, type: 2}
+  - {fileID: 11400000, guid: 1c627fa3c18b243449073ce59a10bc85, type: 2}

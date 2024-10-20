@@ -33,7 +33,7 @@ public sealed partial class GameMatcher {
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    static readonly _Project.Code.Gameplay.Features.Movement.CanDash canDashComponent = new _Project.Code.Gameplay.Features.Movement.CanDash();
+    static readonly _Project.Code.Gameplay.Features.Movement.Dash.CanDash canDashComponent = new _Project.Code.Gameplay.Features.Movement.Dash.CanDash();
 
     public bool isCanDash {
         get { return HasComponent(GameComponentsLookup.CanDash); }

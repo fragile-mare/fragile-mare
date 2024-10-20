@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using _Project.Code.Gameplay.Features.Ability.Configs;
 using _Project.Code.Gameplay.Features.Status.Configs;
-using _Project.Code.Infrastructure.CustomUnity;
 using _Project.Code.Infrastructure.View;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace _Project.Code.Gameplay.Features.Character.Configs
 {
@@ -14,6 +11,11 @@ namespace _Project.Code.Gameplay.Features.Character.Configs
     {
         public float speed;
         public float sprintSpeed;
+        public float dashSpeed;
+        public float dashDuration;
+        public int dashMaxCount;
+        public float dashRegenDuration;
+        public int dashRegenAmount;
         public float maxEnergy;
         public float currentEnergy;
         public float energyToRegen;

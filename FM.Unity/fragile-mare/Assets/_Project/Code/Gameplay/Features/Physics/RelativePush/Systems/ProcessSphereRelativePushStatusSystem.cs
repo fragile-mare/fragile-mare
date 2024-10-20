@@ -49,18 +49,14 @@ namespace _Project.Code.Gameplay.Features.Physics.RelativePush.Systems
                 {
                     GameEntity target = _buffer[i];
 
-                    if (!target.hasTransform || !target.hasId || target.Id == producer.Id)
+                    if (!target.hasTransform || !target.hasVelocity || !target.hasId || target.Id == producer.Id)
                         continue;
 
                     Vector3 distance = target.Transform.position - producer.Transform.position;
 
                     float force = Mathf.Clamp01(1 - distance.magnitude / status.Radius) * status.EffectValue;
 
-                    _effectFactory.CreateEffect(new ImpulseEffectBuilder
-                    {
-                        direction = distance.normalized,
-                        value = force
-                    }, target.Id, GetProducerId(status));
+                    target.ReplaceVelocity(target.Velocity + distance.normalized * force);
                 }
             }
         }

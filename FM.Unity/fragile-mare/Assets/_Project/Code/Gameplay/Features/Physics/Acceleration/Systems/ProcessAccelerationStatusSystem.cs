@@ -1,31 +1,26 @@
-﻿using _Project.Code.Gameplay.Features.Effect.Factories;
-using _Project.Code.Gameplay.Features.Physics.Impulse.Effects;
-using Entitas;
+﻿using Entitas;
 using UnityEngine;
 
 namespace _Project.Code.Gameplay.Features.Physics.Acceleration.Systems
 {
     public class ProcessAccelerationStatusSystem : IExecuteSystem
     {
-        private readonly IEffectFactory _effectFactory;
         private readonly IGroup<GameEntity> _statuses;
         private readonly IGroup<GameEntity> _targets;
 
-        public ProcessAccelerationStatusSystem(GameContext game, IEffectFactory effectFactory)
+        public ProcessAccelerationStatusSystem(GameContext game)
         {
-            _effectFactory = effectFactory;
             _statuses = game.GetGroup(GameMatcher
                 .AllOf(
                     GameMatcher.AccelerationStatus,
                     GameMatcher.TargetId,
                     GameMatcher.TargetVelocity,
-                    GameMatcher.EffectValue,
-                    GameMatcher.DeltaAxis)
+                    GameMatcher.AppliableAxis)
                 .NoneOf(GameMatcher.Expired));
             _targets = game.GetGroup(GameMatcher
                 .AllOf(
                     GameMatcher.Id,
-                    GameMatcher.Rigidbody));
+                    GameMatcher.Velocity));
         }
 
         public void Execute()
@@ -38,26 +33,17 @@ namespace _Project.Code.Gameplay.Features.Physics.Acceleration.Systems
                     continue;
                 }
 
-                var delta = status.TargetVelocity - target.Rigidbody.velocity;
+                Vector3 currentVelocity = target.Velocity;
+                Vector3 targetVelocity = status.TargetVelocity;
 
-                delta.x *= status.DeltaAxis.x;
-                delta.y *= status.DeltaAxis.y;
-                delta.z *= status.DeltaAxis.z;
+                currentVelocity.Scale(status.AppliableAxis - Vector3.one);
+                currentVelocity.Scale(-Vector3.one);
+                targetVelocity.Scale(status.AppliableAxis);
+                
+                targetVelocity += currentVelocity;
 
-                if (delta.magnitude > 0.1)
-                {
-                    _effectFactory.CreateEffect(new ImpulseEffectBuilder 
-                    {
-                        direction = delta.normalized,
-                        value = Mathf.Clamp(delta.magnitude, 0, 1) * status.EffectValue 
-                    }, target.Id, GetProducerId(status));
-                }
+                target.ReplaceVelocity(targetVelocity);
             }
-        }
-
-        private static int GetProducerId(GameEntity status)
-        {
-            return status.hasProducerId ? status.ProducerId : status.Id;
         }
     }
 }

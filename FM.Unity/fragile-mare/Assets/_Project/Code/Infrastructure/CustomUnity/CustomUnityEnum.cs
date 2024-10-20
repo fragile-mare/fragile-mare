@@ -7,7 +7,6 @@ namespace _Project.Code.Infrastructure.CustomUnity
     [Serializable]
     public class CustomUnityEnum<T>
     {
-        
         [SerializeReference]
         public List<T> values;
 

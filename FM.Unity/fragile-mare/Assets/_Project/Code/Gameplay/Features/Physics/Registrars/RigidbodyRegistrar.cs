@@ -8,6 +8,7 @@ namespace _Project.Code.Gameplay.Features.Physics.Registrars
         public override void RegisterComponents()
         {
             Entity.AddRigidbody(GetComponentInChildren<Rigidbody>());
+            Entity.AddVelocity(Entity.Rigidbody.velocity);
         }
 
         public override void UnregisterComponents()

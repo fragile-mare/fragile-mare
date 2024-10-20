@@ -16,7 +16,6 @@ namespace _Project.Code.Gameplay.Features.Status.Configs
             values = new List<IStatusBuilder>
             {
                 new AccelerationStatusBuilder(),
-                new AccelerationInputStatusBuilder(),
                 new SphereRelativePushStatusBuilder()
             }
         };

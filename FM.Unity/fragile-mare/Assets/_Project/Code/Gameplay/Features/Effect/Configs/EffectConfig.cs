@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
 using _Project.Code.Gameplay.Features.Effect.Builders;
-using _Project.Code.Gameplay.Features.Effect.Factories;
-using _Project.Code.Gameplay.Features.Movement.Dash.Effects;
 using _Project.Code.Gameplay.Features.Physics.Impulse.Effects;
 using _Project.Code.Infrastructure.CustomUnity;
 using UnityEngine;
@@ -15,8 +13,7 @@ namespace _Project.Code.Gameplay.Features.Effect.Configs
         {
             values = new List<IEffectBuilder>
             {
-                new ImpulseEffectBuilder(),
-                new DashEffectBuilder()
+                new ImpulseEffectBuilder()
             }
         };
     }
