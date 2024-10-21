@@ -74,24 +74,25 @@ public static class GameComponentsLookup {
     public const int Status = 63;
     public const int TargetVelocity = 64;
     public const int CameraOffsetInitialized = 65;
-    public const int CursorX = 66;
-    public const int CursorY = 67;
-    public const int DashButtonPressed = 68;
-    public const int Input = 69;
-    public const int InputCursorAxis = 70;
-    public const int InputMovementAxis = 71;
-    public const int LimitRotationY = 72;
-    public const int MouseScrollWheel = 73;
-    public const int MouseSens = 74;
-    public const int Offset = 75;
-    public const int SprintButtonPressed = 76;
-    public const int XRotationCursor = 77;
-    public const int YRotationCursor = 78;
-    public const int Zoom = 79;
-    public const int ZoomMax = 80;
-    public const int ZoomMin = 81;
+    public const int Controls = 66;
+    public const int CursorX = 67;
+    public const int CursorY = 68;
+    public const int DashButtonPressed = 69;
+    public const int Input = 70;
+    public const int InputCursorAxis = 71;
+    public const int InputMovementAxis = 72;
+    public const int LimitRotationY = 73;
+    public const int MouseScrollWheel = 74;
+    public const int MouseSens = 75;
+    public const int Offset = 76;
+    public const int SprintButtonPressed = 77;
+    public const int XRotationCursor = 78;
+    public const int YRotationCursor = 79;
+    public const int Zoom = 80;
+    public const int ZoomMax = 81;
+    public const int ZoomMin = 82;
 
-    public const int TotalComponents = 82;
+    public const int TotalComponents = 83;
 
     public static readonly string[] componentNames = {
         "Destructed",
@@ -160,6 +161,7 @@ public static class GameComponentsLookup {
         "Status",
         "TargetVelocity",
         "CameraOffsetInitialized",
+        "Controls",
         "CursorX",
         "CursorY",
         "DashButtonPressed",
@@ -245,6 +247,7 @@ public static class GameComponentsLookup {
         typeof(_Project.Code.Gameplay.Features.Status.Status),
         typeof(_Project.Code.Gameplay.Features.Status.TargetVelocity),
         typeof(_Project.Code.Gameplay.Input.CameraOffsetInitialized),
+        typeof(_Project.Code.Gameplay.Input.ControlsComponent),
         typeof(_Project.Code.Gameplay.Input.CursorX),
         typeof(_Project.Code.Gameplay.Input.CursorY),
         typeof(_Project.Code.Gameplay.Input.DashButtonPressed),
