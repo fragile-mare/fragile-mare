@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbe9f30c57aa4739b25132b642341e13, type: 3}
+  m_Name: InputConfig
+  m_EditorClassIdentifier: 
+  mouseSens: 1
+  zoom: 0.25
+  minZoom: 3
+  maxZoom: 10
+  rotationYLimit: 80
+  controls:
+  - action: 0
+    hotKeys:
+    - mainKey: 304
+      modifiers: 
+      type: 1
+      keyPress: {fileID: 11400000, guid: c07d543d4affc8c44aa04d9020e3c259, type: 2}
+    - mainKey: 303
+      modifiers: 
+      type: 1
+      keyPress: {fileID: 11400000, guid: c07d543d4affc8c44aa04d9020e3c259, type: 2}
+    - mainKey: 306
+      modifiers: 
+      type: 1
+      keyPress: {fileID: 11400000, guid: 924918588188a55419336476799ca81e, type: 2}
+  - action: 1
+    hotKeys:
+    - mainKey: 101
+      modifiers: 
+      type: 0
+      keyPress: {fileID: 11400000, guid: c07d543d4affc8c44aa04d9020e3c259, type: 2}
+    - mainKey: 119
+      modifiers: 
+      type: 0
+      keyPress: {fileID: 11400000, guid: fd7f5b9fd70962443a00b2dc5bdbe290, type: 2}
+    - mainKey: 97
+      modifiers: 
+      type: 0
+      keyPress: {fileID: 11400000, guid: fd7f5b9fd70962443a00b2dc5bdbe290, type: 2}
+    - mainKey: 115
+      modifiers: 
+      type: 0
+      keyPress: {fileID: 11400000, guid: fd7f5b9fd70962443a00b2dc5bdbe290, type: 2}
+    - mainKey: 100
+      modifiers: 
+      type: 0
+      keyPress: {fileID: 11400000, guid: fd7f5b9fd70962443a00b2dc5bdbe290, type: 2}
+    - mainKey: 273
+      modifiers: 
+      type: 0
+      keyPress: {fileID: 11400000, guid: fd7f5b9fd70962443a00b2dc5bdbe290, type: 2}
+    - mainKey: 276
+      modifiers: 
+      type: 0
+      keyPress: {fileID: 11400000, guid: fd7f5b9fd70962443a00b2dc5bdbe290, type: 2}
+    - mainKey: 274
+      modifiers: 
+      type: 0
+      keyPress: {fileID: 11400000, guid: fd7f5b9fd70962443a00b2dc5bdbe290, type: 2}
+    - mainKey: 275
+      modifiers: 
+      type: 0
+      keyPress: {fileID: 11400000, guid: fd7f5b9fd70962443a00b2dc5bdbe290, type: 2}

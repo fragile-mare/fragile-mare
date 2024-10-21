@@ -13,6 +13,7 @@ using _Project.Code.Gameplay.Features.Effect.Factories;
 using _Project.Code.Gameplay.Features.Status.Factories;
 using _Project.Code.Gameplay.Input.Axis.Services;
 using _Project.Code.Gameplay.Input.Button.Services;
+using _Project.Code.Gameplay.Input.Controls.Services;
 using _Project.Code.Gameplay.Input.Cursor.Services;
 using _Project.Code.Gameplay.Input.Scroll.Services;
 using _Project.Code.Infrastructure.Scenes;
@@ -102,6 +103,7 @@ namespace _Project.Code.Infrastructure.Installers
             Container.Bind<ICameraProvider>().To<CameraProvider>().AsSingle();
             Container.Bind<ICursorPositionService>().To<CursorPositionService>().AsSingle();
             Container.Bind<IScrollPositionService>().To<ScrollPositionService>().AsSingle();
+            Container.Bind<IDefaultControlsProvider>().To<DefaultControlsProvider>().AsSingle();
         }
     }
 }

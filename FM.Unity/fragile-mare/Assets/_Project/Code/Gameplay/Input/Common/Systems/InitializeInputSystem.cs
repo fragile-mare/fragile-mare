@@ -1,6 +1,7 @@
 ﻿using _Project.Code.Common.Entity;
 using _Project.Code.Common.Extensions;
 using _Project.Code.Common.Services.StaticData;
+using _Project.Code.Gameplay.Input.Controls.Services;
 using Entitas;
 using UnityEngine;
 
@@ -10,10 +11,12 @@ namespace _Project.Code.Gameplay.Input.Common.Systems
     {
         private GameEntity _input;
         private readonly IStaticDataService _staticData;
-        
-        public InitializeInputSystem(IStaticDataService staticData)
+        private readonly IDefaultControlsProvider _controls;
+
+        public InitializeInputSystem(IStaticDataService staticData, IDefaultControlsProvider controls)
         {
             _staticData = staticData;
+            _controls = controls;
         }
         
         public void Initialize()
@@ -24,13 +27,15 @@ namespace _Project.Code.Gameplay.Input.Common.Systems
                 .AddYRotationCursor(0)
                 .AddCursorX(0)
                 .AddCursorY(0)
-                .AddMouseSens(1)
-                .AddZoom(0.25f)
-                .AddZoomMin(3)
-                .AddZoomMax(10)
+                .AddMouseSens(_staticData.InputConfig.mouseSens)
+                .AddZoom(_staticData.InputConfig.zoom)
+                .AddZoomMin(_staticData.InputConfig.minZoom)
+                .AddZoomMax(_staticData.InputConfig.maxZoom)
                 .AddOffset(Vector3.zero)
                 .AddMouseScrollWheel(0)
-                .AddLimitRotationY(80);
+                .AddLimitRotationY(_staticData.InputConfig.rotationYLimit);
+            
+            _input.AddControls(_controls.GetDefaultControlsCopy());
         }
 
         public void TearDown()
