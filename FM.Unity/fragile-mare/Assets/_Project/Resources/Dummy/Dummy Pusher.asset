@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Dummy Pusher
   m_EditorClassIdentifier: 
   prefab: {fileID: 1872713288925257450, guid: cce0ed0df1806ec4b8ad58ca92ce5204, type: 3}
-  at: {x: 15, y: 0, z: 15}
+  at: {x: -215, y: 1, z: -180}
   abilities:
   - {fileID: 11400000, guid: 8666ffb7c6b8f9645bf77afffb926500, type: 2}
