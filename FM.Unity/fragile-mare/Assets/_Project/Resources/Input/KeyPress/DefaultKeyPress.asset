@@ -18,8 +18,8 @@ MonoBehaviour:
     - rid: 8745255389771858055
     - rid: 8745255389771858056
     - rid: 8745255389771858057
-    chosenValueIndex: -1
-    chosenValue: 
+    chosenValueIndex: 0
+    chosenValue: InstantKeyPress
   references:
     version: 2
     RefIds:
