@@ -1,4 +1,6 @@
-﻿using Entitas;
+﻿using System.Collections.Generic;
+using _Project.Code.Gameplay.Input.Controls;
+using Entitas;
 using UnityEngine;
 using Vector2 = UnityEngine.Vector2;
 
@@ -22,4 +24,6 @@ namespace _Project.Code.Gameplay.Input
     [Game] public class Offset : IComponent { public Vector3 Value; }
     [Game] public class MouseScrollWheel : IComponent { public float Value; }
     [Game] public class CameraOffsetInitialized : IComponent { }
+    
+    [Game] public class ControlsComponent : IComponent { public List<Control> Value; }
 }

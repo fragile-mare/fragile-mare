@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff606482574f4e0fbab4612d9321c3ba, type: 3}
+  m_Name: DefaultKeyPress
+  m_EditorClassIdentifier: 
+  keyPress:
+    values:
+    - rid: 8745255389771858054
+    - rid: 8745255389771858055
+    - rid: 8745255389771858056
+    - rid: 8745255389771858057
+    chosenValueIndex: 0
+    chosenValue: InstantKeyPress
+  references:
+    version: 2
+    RefIds:
+    - rid: 8745255389771858054
+      type: {class: InstantKeyPress, ns: _Project.Code.Gameplay.Input.Controls.Keys.KeyPress.Presses,
+        asm: Assembly-CSharp}
+      data: 
+    - rid: 8745255389771858055
+      type: {class: HoldKeyPress, ns: _Project.Code.Gameplay.Input.Controls.Keys.KeyPress.Presses,
+        asm: Assembly-CSharp}
+      data:
+        holdDuration: 0
+    - rid: 8745255389771858056
+      type: {class: IntervalKeyPress, ns: _Project.Code.Gameplay.Input.Controls.Keys.KeyPress.Presses,
+        asm: Assembly-CSharp}
+      data:
+        pressCount: 0
+        pressInterval: 0
+    - rid: 8745255389771858057
+      type: {class: TurnKeyPress, ns: _Project.Code.Gameplay.Input.Controls.Keys.KeyPress.Presses,
+        asm: Assembly-CSharp}
+      data: 
