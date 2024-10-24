@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 4
   sprintSpeed: 10
-  dashSpeed: 28
+  dashSpeed: 40
   dashDuration: 0.2
   dashMaxCount: 5
   dashRegenDuration: 3
